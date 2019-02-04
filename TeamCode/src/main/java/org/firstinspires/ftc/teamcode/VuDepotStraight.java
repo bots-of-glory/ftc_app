@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -44,10 +45,11 @@ public class VuDepotStraight extends LinearOpMode{
         armServo = hardwareMap.servo.get("armServo");
 
         //declare motor directions
-        frontLeft.setDirection(DcMotor.Direction.REVERSE);
-        rearLeft.setDirection(DcMotor.Direction.REVERSE);
-        frontRight.setDirection(DcMotor.Direction.FORWARD);
-        rearRight.setDirection(DcMotor.Direction.FORWARD);
+        frontLeft.setDirection(DcMotor.Direction.FORWARD);
+        rearLeft.setDirection(DcMotor.Direction.FORWARD);
+        frontRight.setDirection(DcMotor.Direction.REVERSE);
+        rearRight.setDirection(DcMotor.Direction.REVERSE
+        );
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
         armServo.setDirection(Servo.Direction.FORWARD);
 
@@ -66,7 +68,7 @@ public class VuDepotStraight extends LinearOpMode{
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;// recommended camera direction
         parameters.vuforiaLicenseKey = "AbVGrK7/////AAABmV5qNYRo8EpalbdT9iVSnmNR6wynVnTYxdfuU0jrIQJY3/bNzMRAOB9ew/OVmuVwRluGP3sUUHaNIgpXOii6OX5JQHTGyOeDMkVtqPdvynUdw7hRhLL2a8L8nQzJdH4jrKTCB6hAykKflqR4dykoml54fOnuTuXzGgwydwHCkcwt3UnDy/kCMrmSSx/9hBW21N4m6vhqzM9cdhUAGvvQAJPEE7WjrfT14Z4onzZXM185HCLKIEXcaJx10MaGO/xHchVtbvMGB2zDzFJ57uG2+AJopJtI+Qh1anzqoPnolZMUwJHRBhQnxis+QGpoL1RiJ6HqTRQr5mAEuP3q4wX5I1WXydNah5JoLgekylpWKANr\n";
 
-        vision = new MasterVision(parameters, hardwareMap, false, MasterVision.TFLiteAlgorithm.INFER_LEFT);
+        vision = new MasterVision(parameters, hardwareMap, true, MasterVision.TFLiteAlgorithm.INFER_LEFT);
         vision.init();// enables the camera overlay. this will take a couple of seconds
         vision.enable();// enables the tracking algorithms. this might also take a little time
 
@@ -110,7 +112,7 @@ public class VuDepotStraight extends LinearOpMode{
                     //-------------------Block End--------------------------------------------------
 
                     //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                    operateLift(1, 1, 5);
+                    operateLift(1, 0.8, 5);
                     //Wait 1 second
                     sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -156,13 +158,13 @@ public class VuDepotStraight extends LinearOpMode{
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(500);
-                    rearLeft.setPower(.5);
+                    rearLeft.setPower(1);
                     rearRight.setTargetPosition(500);
-                    rearRight.setPower(.5);
+                    rearRight.setPower(1);
                     frontLeft.setTargetPosition(500);
-                    frontLeft.setPower(.5);
+                    frontLeft.setPower(1);
                     frontRight.setTargetPosition(500);
-                    frontRight.setPower(.5);
+                    frontRight.setPower(1);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
                     while (rearRight.isBusy() && opModeIsActive()) {
@@ -437,11 +439,7 @@ public class VuDepotStraight extends LinearOpMode{
 
 
 
-//-----------------------------Lift Down Start------------------------------------------------------
-                    operateLift(0, 1, 5);
-                    //Wait 1 second
-                    sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+
 
 
                     //----------------------WAIT-------------------------------------
@@ -518,7 +516,7 @@ public class VuDepotStraight extends LinearOpMode{
                     //-------------------Block End--------------------------------------------------
 
                     //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                    operateLift(1, 1, 5);
+                    operateLift(1, 0.8, 5);
                     //Wait 1 second
                     sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -565,13 +563,13 @@ public class VuDepotStraight extends LinearOpMode{
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(500);
-                    rearLeft.setPower(.5);
+                    rearLeft.setPower(1);
                     rearRight.setTargetPosition(500);
-                    rearRight.setPower(.5);
+                    rearRight.setPower(1);
                     frontLeft.setTargetPosition(500);
-                    frontLeft.setPower(.5);
+                    frontLeft.setPower(1);
                     frontRight.setTargetPosition(500);
-                    frontRight.setPower(.5);
+                    frontRight.setPower(1);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
                     while (rearRight.isBusy() && opModeIsActive()) {
@@ -689,11 +687,7 @@ public class VuDepotStraight extends LinearOpMode{
 //-----------------------------Straight to Depot End------------------------------------------------
 
 
-//-----------------------------Lift Down Start------------------------------------------------------
-                    operateLift(0, 1, 5);
-                    //Wait 1 second
-                    sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+
 
 
                     //----------------------WAIT-------------------------------------
@@ -760,7 +754,7 @@ public class VuDepotStraight extends LinearOpMode{
                     //-------------------Block End--------------------------------------------------
 
                     //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                    operateLift(1, 1, 5);
+                    operateLift(1, 0.8, 5);
                     //Wait 1 second
                     sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -806,13 +800,13 @@ public class VuDepotStraight extends LinearOpMode{
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(800);
-                    rearLeft.setPower(0.5);
+                    rearLeft.setPower(1);
                     rearRight.setTargetPosition(800);
-                    rearRight.setPower(0.5);
+                    rearRight.setPower(1);
                     frontLeft.setTargetPosition(800);
-                    frontLeft.setPower(0.5);
+                    frontLeft.setPower(1);
                     frontRight.setTargetPosition(800);
-                    frontRight.setPower(0.5);
+                    frontRight.setPower(1);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
                     while (rearRight.isBusy() && opModeIsActive()) {
@@ -953,6 +947,38 @@ public class VuDepotStraight extends LinearOpMode{
                     frontRight.setPower(0);
 //-----------------------------Strafe Right End------------------------------------------------
 
+//----------------------Straight Start-------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(800);
+                    rearLeft.setPower(1);
+                    rearRight.setTargetPosition(800);
+                    rearRight.setPower(1);
+                    frontLeft.setTargetPosition(800);
+                    frontLeft.setPower(1);
+                    frontRight.setTargetPosition(800);
+                    frontRight.setPower(1);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-------------------Block End--------------------------------------------------
+
+
 //-----------------------------Place Marker Start---------------------------------------------------
                     armServo.setPosition(0.7);
                     sleep(500); //wait
@@ -1021,11 +1047,7 @@ public class VuDepotStraight extends LinearOpMode{
 //------------------------Turn 45 degrees counterclockwise end-------------------------------
 
 
-//-----------------------------Lift Down Start------------------------------------------------------
-                    operateLift(0, 1, 5);
-                    //Wait 1 second
-                    sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+
 
                     //----------------------WAIT-------------------------------------
                     sleep(25000);
@@ -1104,7 +1126,7 @@ public class VuDepotStraight extends LinearOpMode{
                     //-------------------Block End--------------------------------------------------
 
                     //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                    operateLift(1, 1, 5);
+                    operateLift(1, 0.8, 5);
                     //Wait 1 second
                     sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -1151,13 +1173,13 @@ public class VuDepotStraight extends LinearOpMode{
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(500);
-                    rearLeft.setPower(.5);
+                    rearLeft.setPower(1);
                     rearRight.setTargetPosition(500);
-                    rearRight.setPower(.5);
+                    rearRight.setPower(1);
                     frontLeft.setTargetPosition(500);
-                    frontLeft.setPower(.5);
+                    frontLeft.setPower(1);
                     frontRight.setTargetPosition(500);
-                    frontRight.setPower(.5);
+                    frontRight.setPower(1);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
                     while (rearRight.isBusy() && opModeIsActive()) {
@@ -1275,11 +1297,7 @@ public class VuDepotStraight extends LinearOpMode{
 //-----------------------------Straight to Depot End------------------------------------------------
 
 
-//-----------------------------Lift Down Start------------------------------------------------------
-                    operateLift(0, 1, 5);
-                    //Wait 1 second
-                    sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+
 
 
                     //----------------------WAIT-------------------------------------
@@ -1379,12 +1397,12 @@ public class VuDepotStraight extends LinearOpMode{
         if (opModeIsActive()) {
             if (position == 0) {
                 //Change This Number to Determine the Upper Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 8200
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7700
                 );
                 liftMotor.setPower(-speed);
             } else {
                 //Change This Number to Determine the Lower Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 8200
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7700
                 );
                 liftMotor.setPower(-speed);
             }

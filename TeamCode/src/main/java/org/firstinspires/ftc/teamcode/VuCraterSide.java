@@ -1,11 +1,11 @@
-    package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
-    import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
     import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
     import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
     import com.qualcomm.robotcore.hardware.DcMotor;
-    import com.qualcomm.robotcore.hardware.DcMotorSimple;
-    import com.qualcomm.robotcore.hardware.GyroSensor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.GyroSensor;
     import com.qualcomm.robotcore.hardware.Servo;
     import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -42,10 +42,10 @@
             armServo = hardwareMap.servo.get ("armServo");
 
             //declare motor directions
-            frontLeft.setDirection(DcMotor.Direction.REVERSE);
-            rearLeft.setDirection(DcMotor.Direction.REVERSE);
-            frontRight.setDirection(DcMotor.Direction.FORWARD);
-            rearRight.setDirection(DcMotor.Direction.FORWARD);
+            frontLeft.setDirection(DcMotor.Direction.FORWARD);
+            rearLeft.setDirection(DcMotor.Direction.FORWARD);
+            frontRight.setDirection(DcMotor.Direction.REVERSE);
+            rearRight.setDirection(DcMotor.Direction.REVERSE);
             liftMotor.setDirection(DcMotor.Direction.REVERSE);
             armServo.setDirection(Servo.Direction.FORWARD);
 
@@ -65,7 +65,7 @@
             parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;// recommended camera direction
             parameters.vuforiaLicenseKey = "AbVGrK7/////AAABmV5qNYRo8EpalbdT9iVSnmNR6wynVnTYxdfuU0jrIQJY3/bNzMRAOB9ew/OVmuVwRluGP3sUUHaNIgpXOii6OX5JQHTGyOeDMkVtqPdvynUdw7hRhLL2a8L8nQzJdH4jrKTCB6hAykKflqR4dykoml54fOnuTuXzGgwydwHCkcwt3UnDy/kCMrmSSx/9hBW21N4m6vhqzM9cdhUAGvvQAJPEE7WjrfT14Z4onzZXM185HCLKIEXcaJx10MaGO/xHchVtbvMGB2zDzFJ57uG2+AJopJtI+Qh1anzqoPnolZMUwJHRBhQnxis+QGpoL1RiJ6HqTRQr5mAEuP3q4wX5I1WXydNah5JoLgekylpWKANr\n";
 
-            vision = new MasterVision(parameters, hardwareMap, false, MasterVision.TFLiteAlgorithm.INFER_LEFT);
+            vision = new MasterVision(parameters, hardwareMap, true, MasterVision.TFLiteAlgorithm.INFER_LEFT);
             vision.init();// enables the camera overlay. this will take a couple of seconds
             vision.enable();// enables the tracking algorithms. this might also take a little time
 
@@ -102,7 +102,7 @@
                         //-------------------Block End--------------------------------------------------
 
                         //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                        operateLift(1, 1, 5);
+                        operateLift(1, 0.8, 5);
                         //Wait 1 second
                         sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -149,13 +149,13 @@
                         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         rearLeft.setTargetPosition(600);
-                        rearLeft.setPower(0.5);
+                        rearLeft.setPower(1);
                         rearRight.setTargetPosition(600);
-                        rearRight.setPower(0.5);
+                        rearRight.setPower(1);
                         frontLeft.setTargetPosition(600);
-                        frontLeft.setPower(0.5);
+                        frontLeft.setPower(1);
                         frontRight.setTargetPosition(600);
-                        frontRight.setPower(0.5);
+                        frontRight.setPower(1);
                         while (rearLeft.isBusy() && opModeIsActive()) {
                         }
                         while (rearRight.isBusy() && opModeIsActive()) {
@@ -460,11 +460,8 @@
                         frontRight.setPower(0);
     //-------------------Block End--------------------------------------------------
 
-                        //-----------------------------Lift Down Start------------------------------------------------------
-                        operateLift(0, 1, 5);
-                        //Wait 1 second
-                        sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+                        sleep(100);
+                        // operateLift(0, 1, 3);
 
                         //----------------------WAIT-------------------------------------
                         sleep(25000);
@@ -510,7 +507,7 @@
                         sleep(400); //wait
 
                         //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                        operateLift(1, 1, 5);
+                        operateLift(1, 0.8, 5);
                         //Wait 1 second
                         sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -559,13 +556,13 @@
                         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         rearLeft.setTargetPosition(1000);
-                        rearLeft.setPower(0.5);
+                        rearLeft.setPower(1);
                         rearRight.setTargetPosition(1000);
-                        rearRight.setPower(0.5);
+                        rearRight.setPower(1);
                         frontLeft.setTargetPosition(1000);
-                        frontLeft.setPower(0.5);
+                        frontLeft.setPower(1);
                         frontRight.setTargetPosition(1000);
-                        frontRight.setPower(0.5);
+                        frontRight.setPower(1);
                         while (rearLeft.isBusy() && opModeIsActive()) {
                         }
                         while (rearRight.isBusy() && opModeIsActive()) {
@@ -866,12 +863,6 @@
                         frontRight.setPower(0);
                         //-------------------Block End--------------------------------------------------
 
-                        //-----------------------------Lift Down Start------------------------------------------------------
-                        operateLift(0, 1, 5);
-                        //Wait 1 second
-                        sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
-
                         //----------------------WAIT-------------------------------------
                         sleep(25000);
                         //----------------------------------------------------------------
@@ -909,7 +900,7 @@
 
 
                         //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                        operateLift(1, 1, 5);
+                        operateLift(1, 0.8, 5);
                         //Wait 1 second
                         sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -958,13 +949,13 @@
                         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         rearLeft.setTargetPosition(800);
-                        rearLeft.setPower(0.5);
+                        rearLeft.setPower(1);
                         rearRight.setTargetPosition(800);
-                        rearRight.setPower(0.5);
+                        rearRight.setPower(1);
                         frontLeft.setTargetPosition(800);
-                        frontLeft.setPower(0.5);
+                        frontLeft.setPower(1);
                         frontRight.setTargetPosition(800);
-                        frontRight.setPower(0.5);
+                        frontRight.setPower(1);
                         while (rearLeft.isBusy() && opModeIsActive()) {
                         }
                         while (rearRight.isBusy() && opModeIsActive()) {
@@ -1264,11 +1255,7 @@
                         frontLeft.setPower(0);
                         frontRight.setPower(0);
                         //-------------------Block End--------------------------------------------------
-//-----------------------------Lift Down Start------------------------------------------------------
-                        operateLift(0, 1, 5);
-                        //Wait 1 second
-                        sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+
                         //----------------------WAIT-------------------------------------
                         sleep(25000);
                         //----------------------------------------------------------------
@@ -1320,7 +1307,7 @@
                             sleep(400); //wait
 
                             //-----------------------------Lift Up(lower robot) Start-------------------------------------------
-                            operateLift(1, 1, 5);
+                            operateLift(1, 0.8, 5);
                             //Wait 1 second
                             sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
@@ -1369,13 +1356,13 @@
                             frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                             frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                             rearLeft.setTargetPosition(1000);
-                            rearLeft.setPower(0.5);
+                            rearLeft.setPower(1);
                             rearRight.setTargetPosition(1000);
-                            rearRight.setPower(0.5);
+                            rearRight.setPower(1);
                             frontLeft.setTargetPosition(1000);
-                            frontLeft.setPower(0.5);
+                            frontLeft.setPower(1);
                             frontRight.setTargetPosition(1000);
-                            frontRight.setPower(0.5);
+                            frontRight.setPower(1);
                             while (rearLeft.isBusy() && opModeIsActive()) {
                             }
                             while (rearRight.isBusy() && opModeIsActive()) {
@@ -1675,11 +1662,7 @@
                             frontLeft.setPower(0);
                             frontRight.setPower(0);
                             //-------------------Block End--------------------------------------------------
-//-----------------------------Lift Down Start------------------------------------------------------
-                        operateLift(0, 1, 5);
-                        //Wait 1 second
-                        sleep(500);
-//-----------------------------Lift Down End--------------------------------------------------------
+
                             //----------------------WAIT-------------------------------------
                             sleep(25000);
                             //----------------------------------------------------------------
@@ -1744,12 +1727,12 @@
             if (opModeIsActive()) {
                 if (position == 0) {
                     //Change This Number to Determine the Upper Position of the Lift
-                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7600
+                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7700
                     );
                     liftMotor.setPower(-speed);
                 } else {
                     //Change This Number to Determine the Lower Position of the Lift
-                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7600
+                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7700
                     );
                     liftMotor.setPower(-speed);
                 }
