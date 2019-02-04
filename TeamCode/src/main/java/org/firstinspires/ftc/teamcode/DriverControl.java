@@ -1,10 +1,8 @@
 package org.firstinspires.ftc.teamcode;
-<<<<<<< .merge_file_a47764
+
 //hello world
 //Hello world 2
-=======
 
->>>>>>> .merge_file_a19520
 import android.hardware.Sensor;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
