@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-//hello world
-//Hello world 2
-
 import android.hardware.Sensor;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -14,9 +11,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-@TeleOp (name = "DriverControl" , group = "testOp")
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "DriverControl" , group = "testOp")
 //@Disabled
-
 
 public class DriverControl extends LinearOpMode
 {
@@ -45,7 +41,7 @@ public class DriverControl extends LinearOpMode
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
         liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        flipperMotor = hardwareMap.dcMotor.get("flipprMotor");
+        flipperMotor = hardwareMap.dcMotor.get("flipperMotor");
         pulleyMotor = hardwareMap.dcMotor.get("pulleyMotor");
         revLift = hardwareMap.dcMotor.get("revLift");
 //Declare Servos
