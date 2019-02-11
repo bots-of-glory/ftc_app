@@ -1420,4 +1420,6 @@ public class VuDepotStraight extends LinearOpMode{
             }
             liftMotor.setPower(0);
             liftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        }}}
+        }
+    }
+}
