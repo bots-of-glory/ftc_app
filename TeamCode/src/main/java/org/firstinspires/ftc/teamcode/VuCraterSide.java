@@ -179,13 +179,13 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
                         rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                        rearLeft.setTargetPosition(2000);
+                        rearLeft.setTargetPosition(1850);
                         rearLeft.setPower(0.5);
-                        rearRight.setTargetPosition(-2000);
+                        rearRight.setTargetPosition(-1850);
                         rearRight.setPower(0.5);
-                        frontLeft.setTargetPosition(-2000);
+                        frontLeft.setTargetPosition(-1850);
                         frontLeft.setPower(0.5);
-                        frontRight.setTargetPosition(2000);
+                        frontRight.setTargetPosition(1850);
                         frontRight.setPower(0.5);
                         while (rearLeft.isBusy() && opModeIsActive()) {
                         }
