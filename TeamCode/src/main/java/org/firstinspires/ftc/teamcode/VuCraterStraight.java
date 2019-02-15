@@ -852,12 +852,12 @@ public class VuCraterStraight extends LinearOpMode{
         if (opModeIsActive()) {
             if (position == 0) {
                 //Change This Number to Determine the Upper Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7700
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7750
                 );
                 liftMotor.setPower(-speed);
             } else {
                 //Change This Number to Determine the Lower Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7700
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7750
                 );
                 liftMotor.setPower(-speed);
             }

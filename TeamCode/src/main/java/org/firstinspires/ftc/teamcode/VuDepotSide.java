@@ -95,14 +95,12 @@ public class VuDepotSide extends LinearOpMode{
 
 
 
-                    //-------------------Place Marker Start--------------------------------------------------
+//-------------------Place Marker Start--------------------------------------------------
                     armServo.setPosition(0.0);
                     sleep(400); //wait
+//-------------------Block End--------------------------------------------------
 
-
-                    //-------------------Block End--------------------------------------------------
-
-                    //-----------------------------Lift Up(lower robot) Start-------------------------------------------
+//-----------------------------Lift Up(lower robot) Start-------------------------------------------
                     operateLift(1, 1, 5);
                     //Wait 1 second
                     sleep(500);
@@ -329,7 +327,7 @@ public class VuDepotSide extends LinearOpMode{
                     frontRight.setPower(0);
 //-----------------------------Turn Clockwise End------------------------------------------------
 
-                    //-----------------------------Turn Counterclockwise Start----------------------------------------------
+//-----------------------------Turn Counterclockwise Start----------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -460,15 +458,8 @@ public class VuDepotSide extends LinearOpMode{
                     frontRight.setPower(0);
 //-----------------------------Straight End----------------------------------------------
 
-
-
-
-
                     sleep(25000);
 
-
-
-                    //----------------------------------------------------------------
                 }
                 break;
 
@@ -1142,6 +1133,9 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+
                     rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -1385,12 +1379,12 @@ public class VuDepotSide extends LinearOpMode{
         if (opModeIsActive()) {
             if (position == 0) {
                 //Change This Number to Determine the Upper Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7700
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7750
                 );
                 liftMotor.setPower(-speed);
             } else {
                 //Change This Number to Determine the Lower Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7700
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7750
                 );
                 liftMotor.setPower(-speed);
             }

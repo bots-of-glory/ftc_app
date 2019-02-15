@@ -970,7 +970,7 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
                         frontRight.setPower(0);
     //-------------------Block End--------------------------------------------------
 
-                        //----------------------Strafe To Mineral-------------------------------------
+//---------------------------------Strafe To Mineral-------------------------------------
                         rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                         rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -979,13 +979,13 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
                         rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                        rearLeft.setTargetPosition(-800);
+                        rearLeft.setTargetPosition(800);
                         rearLeft.setPower(0.5);
-                        rearRight.setTargetPosition(800);
+                        rearRight.setTargetPosition(-800);
                         rearRight.setPower(0.5);
-                        frontLeft.setTargetPosition(800);
+                        frontLeft.setTargetPosition(-800);
                         frontLeft.setPower(0.5);
-                        frontRight.setTargetPosition(-800);
+                        frontRight.setTargetPosition(800);
                         frontRight.setPower(0.5);
                         while (rearLeft.isBusy() && opModeIsActive()) {
                         }
@@ -999,7 +999,7 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
                         rearRight.setPower(0);
                         frontLeft.setPower(0);
                         frontRight.setPower(0);
-    //-------------------Block End--------------------------------------------------
+//-----------------------------------Block End--------------------------------------------------
 
                         //----------------------Straight To Mineral-------------------------------------
                         rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -1727,12 +1727,12 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
             if (opModeIsActive()) {
                 if (position == 0) {
                     //Change This Number to Determine the Upper Position of the Lift
-                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7700
+                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7750
                     );
                     liftMotor.setPower(-speed);
                 } else {
                     //Change This Number to Determine the Lower Position of the Lift
-                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7700
+                    liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7750
                     );
                     liftMotor.setPower(-speed);
                 }
