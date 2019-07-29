@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class SimpleRobotTest extends LinearOpMode {
     private DcMotor rightMotor;
     private DcMotor leftMotor;
-//test sc
+
     // called when init button is  pressed.
     @Override
     public void runOpMode() {
