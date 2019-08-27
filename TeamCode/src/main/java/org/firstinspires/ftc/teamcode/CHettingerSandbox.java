@@ -12,7 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
-@Autonomous (name="VuCraterSide", group="Competition Autonomous")
+@Autonomous (name="CHettingerSandbox", group="Competition Autonomous")
 public class CHettingerSandbox extends LinearOpMode{
     MasterVision vision;
     SampleRandomizedPositions goldPosition;

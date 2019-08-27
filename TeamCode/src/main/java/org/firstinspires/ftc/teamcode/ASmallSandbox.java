@@ -16,8 +16,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
-@Autonomous (name="VuDepotSide", group="Competition Autonomous")
-public class VuDepotSide extends LinearOpMode{
+@Autonomous (name="ASmallSandbox", group="Competition Autonomous")
+public class ASmallSandbox extends LinearOpMode {
     MasterVision vision;
     SampleRandomizedPositions goldPosition;
     DcMotor liftMotor;
@@ -26,7 +26,7 @@ public class VuDepotSide extends LinearOpMode{
     DcMotor frontRight;
     DcMotor rearRight;
     Servo armServo;
-    GyroSensor gsensorGyro;
+    GyroSensor sensorGyro;
     ModernRoboticsI2cGyro mrGyro;
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -51,7 +51,7 @@ public class VuDepotSide extends LinearOpMode{
         rearRight.setDirection(DcMotor.Direction.REVERSE);
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
         armServo.setDirection(Servo.Direction.FORWARD);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  r
+
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
 
@@ -66,8 +66,9 @@ public class VuDepotSide extends LinearOpMode{
         //Move forward
         frontLeft.setPower(1);
         rearLeft.setPower(1);
-        frontRight(-1);
-        frontLeft(1);
+        frontRight.setPower(-1);
+        frontLeft.setPower(1);
         Thread.sleep(2000);
         //move left
-    }}}
+    }
+}
