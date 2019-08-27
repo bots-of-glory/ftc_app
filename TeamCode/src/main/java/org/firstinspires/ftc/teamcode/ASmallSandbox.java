@@ -51,7 +51,7 @@ public class VuDepotSide extends LinearOpMode{
         rearRight.setDirection(DcMotor.Direction.REVERSE);
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
         armServo.setDirection(Servo.Direction.FORWARD);
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  r
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
 
@@ -68,6 +68,6 @@ public class VuDepotSide extends LinearOpMode{
         rearLeft.setPower(1);
         frontRight(-1);
         frontLeft(1);
-        Thread.sleep 200;
+        Thread.sleep(2000);
         //move left
     }}}
