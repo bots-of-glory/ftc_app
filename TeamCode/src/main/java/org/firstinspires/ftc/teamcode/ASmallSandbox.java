@@ -59,13 +59,13 @@ public class ASmallSandbox extends LinearOpMode {
         int target = 0;
 
         frontLeft.setPower(1);
-        rearLeft.setPower(-1);
-        frontRight.setPower(1);
+        rearLeft.setPower(1);
+        frontRight.setPower(-1);
         rearRight.setPower(-1);
         Thread.sleep(5000);
         //Move forward
         frontLeft.setPower(1);
-        rearLeft.setPower(1);
+        rearLeft.setPower(-1);
         frontRight.setPower(-1);
         frontLeft.setPower(1);
         Thread.sleep(2000);
