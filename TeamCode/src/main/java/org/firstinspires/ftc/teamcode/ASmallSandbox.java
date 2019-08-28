@@ -58,17 +58,23 @@ public class ASmallSandbox extends LinearOpMode {
         double turnSpeed = 0.2;
         int target = 0;
 
-        frontLeft.setPower(1);
-        rearLeft.setPower(1);
-        frontRight.setPower(1);
-        rearRight.setPower(1);
-        Thread.sleep(5000);
-        //Move forward
-        frontLeft.setPower(-1);
-        rearLeft.setPower(1);
-        frontRight.setPower(1);
-        rearRight.setPower(-1);
-        Thread.sleep(2000);
-        //move left
+        waitForStart();
+
+
+        while(opModeIsActive()) {
+            //forward
+            frontLeft.setPower(1);
+            rearLeft.setPower(1);
+            frontRight.setPower(1);
+            rearRight.setPower(1);
+            Thread.sleep(2000);
+            //strafe
+            frontLeft.setPower(-1);
+            rearLeft.setPower(1);
+            frontRight.setPower(1);
+            rearRight.setPower(-1);
+            Thread.sleep(2000);
+
+        }
     }
 }
