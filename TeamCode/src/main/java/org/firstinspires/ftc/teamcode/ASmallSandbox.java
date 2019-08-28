@@ -61,7 +61,7 @@ public class ASmallSandbox extends LinearOpMode {
         waitForStart();
 
 
-        while(opModeIsActive()) {
+
             //forward
             frontLeft.setPower(1);
             rearLeft.setPower(1);
@@ -74,7 +74,5 @@ public class ASmallSandbox extends LinearOpMode {
             frontRight.setPower(1);
             rearRight.setPower(-1);
             Thread.sleep(2000);
-
-        }
     }
 }
