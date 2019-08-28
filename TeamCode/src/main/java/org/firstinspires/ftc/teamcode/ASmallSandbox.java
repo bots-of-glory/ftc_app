@@ -69,10 +69,10 @@ public class ASmallSandbox extends LinearOpMode {
             rearRight.setPower(1);
             Thread.sleep(2000);
             //strafe
-            frontLeft.setPower(.6);
-            rearLeft.setPower(-.6);
-            frontRight.setPower(-.6);
-            rearRight.setPower(.6);
+            frontLeft.setPower(-.6);
+            rearLeft.setPower(.6);
+            frontRight.setPower(.6);
+            rearRight.setPower(-.6);
             Thread.sleep(2000);
     }
 }
