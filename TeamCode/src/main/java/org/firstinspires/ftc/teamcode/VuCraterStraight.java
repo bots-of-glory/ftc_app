@@ -54,7 +54,6 @@ public class VuCraterStraight extends LinearOpMode{
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
-
         double turnSpeed = 0.2;
         int zAccumulated;
         int target = 0;

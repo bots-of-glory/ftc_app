@@ -2,22 +2,17 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.vuforia.Vuforia;
 
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
-@Autonomous (name="ASmallSandbox", group="Competition Autonomous")
-public class ASmallSandbox extends LinearOpMode {
+@Autonomous (name="Prototype", group="Competition Autonomous")
+public class Prototype extends LinearOpMode {
     MasterVision vision;
     SampleRandomizedPositions goldPosition;
     DcMotor liftMotor;
@@ -60,19 +55,7 @@ public class ASmallSandbox extends LinearOpMode {
 
         waitForStart();
 
-        //forward
-        frontLeft.setPower(1);
-        rearLeft.setPower(1);
-        frontRight.setPower(1);
-        rearRight.setPower(1);
-        Thread.sleep(2000);
-        //strafe
-        //AutonomousCommon.strafeLeft(frontLeft,rearLeft,frontRight,rearRight,2000);
-        //AutonomousCommon.macanumStrafeRight(frontLeft,rearLeft,frontRight,rearRight,2600,true, telemetry);
-        //frontLeft.setPower(-1);
-        //rearLeft.setPower(1);
-        //frontRight.setPower(1);
-        //rearRight.setPower(-1);
-        //Thread.sleep(2000);
+        AutonomousCommon.macanumStrafe(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Left,2600,0.6,true, telemetry);
+        AutonomousCommon.macanumStrafe(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Right,2600,0.6,true, telemetry);
     }
 }

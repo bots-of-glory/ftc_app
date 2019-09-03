@@ -12,17 +12,9 @@ import java.util.List;
 
 public class AutonomousCommon  {
 
+    public static void macanumStrafe(DcMotor frontLeft, DcMotor rearLeft, DcMotor frontRight, DcMotor rearRight,StrafeDirection strafeDirection, int targetPosition,double power, boolean opModeIsActive, Telemetry telemetry) {
 
-    public static void strafeLeft(DcMotor frontLeft,DcMotor rearLeft,DcMotor frontRight,DcMotor rearRight,long milliseconds){
-        frontLeft.setPower(-1);
-        rearLeft.setPower(1);
-        frontRight.setPower(1);
-        rearRight.setPower(-1);
-        sleep(milliseconds);
-    }
-
-    public static void macanumStrafeLeft(DcMotor frontLeft, DcMotor rearLeft, DcMotor frontRight, DcMotor rearRight, int targetPosition,boolean opModeIsActive, Telemetry telemetry) {
-        telemetry.addLine("Begin macanumStrafeLeft");
+        telemetry.addLine("Begin macanumStrafe");
         telemetry.update();
         rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -32,14 +24,28 @@ public class AutonomousCommon  {
         rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rearLeft.setTargetPosition(-targetPosition);
-        rearLeft.setPower(0.6);
-        rearRight.setTargetPosition(targetPosition);
-        rearRight.setPower(0.6);
-        frontLeft.setTargetPosition(targetPosition);
-        frontLeft.setPower(0.6);
-        frontRight.setTargetPosition(-targetPosition);
-        frontRight.setPower(0.6);
+
+        if(strafeDirection == StrafeDirection.Left){
+            telemetry.addLine("strafing left");
+            rearLeft.setTargetPosition(targetPosition);
+            rearRight.setTargetPosition(-targetPosition);
+            frontLeft.setTargetPosition(-targetPosition);
+            frontRight.setTargetPosition(targetPosition);
+
+        }
+
+        if(strafeDirection == StrafeDirection.Right) {
+            telemetry.addLine("strafing right");
+            rearLeft.setTargetPosition(-targetPosition);
+            rearRight.setTargetPosition(targetPosition);
+            frontLeft.setTargetPosition(targetPosition);
+            frontRight.setTargetPosition(-targetPosition);
+        }
+        rearLeft.setPower(power);
+        rearRight.setPower(power);
+        frontLeft.setPower(power);
+        frontRight.setPower(power);
+
         while (rearLeft.isBusy() && opModeIsActive) {
         }
         while (rearRight.isBusy() && opModeIsActive) {
@@ -53,7 +59,7 @@ public class AutonomousCommon  {
         frontLeft.setPower(0);
         frontRight.setPower(0);
 
-        telemetry.addLine("End macanumStrafeLeft");
+        telemetry.addLine("End macanumStrafe");
         telemetry.update();
     }
 
@@ -64,5 +70,9 @@ public class AutonomousCommon  {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+    }
+    public enum StrafeDirection{
+        Left,
+        Right
     }
 }
