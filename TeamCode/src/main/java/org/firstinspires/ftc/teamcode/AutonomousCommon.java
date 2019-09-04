@@ -12,8 +12,22 @@ import java.util.List;
 
 public class AutonomousCommon  {
 
+    public static void macanumBox(DcMotor frontLeft, DcMotor rearLeft,
+                                  DcMotor frontRight, DcMotor rearRight,
+                                  int targetPosition,double power, boolean opModeIsActive,
+                                  Telemetry telemetry) {
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Forward,targetPosition,power,opModeIsActive, telemetry);
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Right,targetPosition,power,opModeIsActive, telemetry);
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Backward,targetPosition,power,opModeIsActive, telemetry);
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Left,targetPosition,power,opModeIsActive, telemetry);
 
-    public static void macanumMovement(DcMotor frontLeft, DcMotor rearLeft, DcMotor frontRight, DcMotor rearRight,StrafeDirection strafeDirection, int targetPosition,double power, boolean opModeIsActive, Telemetry telemetry) {
+    }
+
+    public static void macanumMovement(DcMotor frontLeft, DcMotor rearLeft,
+                                   DcMotor frontRight, DcMotor rearRight,
+                                   StrafeDirection strafeDirection,
+                                   int targetPosition,double power, boolean opModeIsActive,
+                                   Telemetry telemetry) {
 
         telemetry.addLine("Begin macanumMovement");
         telemetry.update();

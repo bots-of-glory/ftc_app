@@ -54,9 +54,12 @@ public class Prototype extends LinearOpMode {
         int target = 0;
 
         waitForStart();
-        AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Forward,2600,0.6,true, telemetry);
-        AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Right,2600,0.6,true, telemetry);
-        AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Backward,2600,0.6,true, telemetry);
-        AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Left,2600,0.6,true, telemetry);
+        // AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Forward,2600,0.6,true, telemetry);
+        // AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Right,2600,0.6,true, telemetry);
+        // AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Backward,2600,0.6,true, telemetry);
+        // AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Left,2600,0.6,true, telemetry);
+        AutonomousCommon.macanumBox(frontLeft,rearLeft,frontRight,rearRight,2600,0.6,true, telemetry);
+
     }
+
 }
