@@ -12,9 +12,10 @@ import java.util.List;
 
 public class AutonomousCommon  {
 
-    public static void macanumStrafe(DcMotor frontLeft, DcMotor rearLeft, DcMotor frontRight, DcMotor rearRight,StrafeDirection strafeDirection, int targetPosition,double power, boolean opModeIsActive, Telemetry telemetry) {
 
-        telemetry.addLine("Begin macanumStrafe");
+    public static void macanumMovement(DcMotor frontLeft, DcMotor rearLeft, DcMotor frontRight, DcMotor rearRight,StrafeDirection strafeDirection, int targetPosition,double power, boolean opModeIsActive, Telemetry telemetry) {
+
+        telemetry.addLine("Begin macanumMovement");
         telemetry.update();
         rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -25,20 +26,42 @@ public class AutonomousCommon  {
         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
+        //Left Strafe
         if(strafeDirection == StrafeDirection.Left){
             telemetry.addLine("strafing left");
+            telemetry.update();
             rearLeft.setTargetPosition(targetPosition);
             rearRight.setTargetPosition(-targetPosition);
             frontLeft.setTargetPosition(-targetPosition);
             frontRight.setTargetPosition(targetPosition);
 
         }
-
+        //Right Strafe
         if(strafeDirection == StrafeDirection.Right) {
             telemetry.addLine("strafing right");
+            telemetry.update();
             rearLeft.setTargetPosition(-targetPosition);
             rearRight.setTargetPosition(targetPosition);
             frontLeft.setTargetPosition(targetPosition);
+            frontRight.setTargetPosition(-targetPosition);
+        }
+        //Moving Forward
+        if(strafeDirection == StrafeDirection.Forward){
+            telemetry.addLine("moving forward");
+            telemetry.update();
+            rearLeft.setTargetPosition(targetPosition);
+            rearRight.setTargetPosition(targetPosition);
+            frontLeft.setTargetPosition(targetPosition);
+            frontRight.setTargetPosition(targetPosition);
+
+        }
+        //Moving Backward
+        if(strafeDirection == StrafeDirection.Backward) {
+            telemetry.addLine("moving backward");
+            telemetry.update();
+            rearLeft.setTargetPosition(-targetPosition);
+            rearRight.setTargetPosition(-targetPosition);
+            frontLeft.setTargetPosition(-targetPosition);
             frontRight.setTargetPosition(-targetPosition);
         }
         rearLeft.setPower(power);
@@ -59,7 +82,7 @@ public class AutonomousCommon  {
         frontLeft.setPower(0);
         frontRight.setPower(0);
 
-        telemetry.addLine("End macanumStrafe");
+        telemetry.addLine("End macanumMovement");
         telemetry.update();
     }
 
@@ -73,6 +96,8 @@ public class AutonomousCommon  {
     }
     public enum StrafeDirection{
         Left,
-        Right
+        Right,
+        Forward,
+        Backward
     }
 }
