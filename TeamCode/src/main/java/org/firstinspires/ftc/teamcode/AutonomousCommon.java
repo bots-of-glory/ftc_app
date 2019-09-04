@@ -26,44 +26,41 @@ public class AutonomousCommon  {
         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        //Left Strafe
-        if(strafeDirection == StrafeDirection.Left){
-            telemetry.addLine("strafing left");
-            telemetry.update();
-            rearLeft.setTargetPosition(targetPosition);
-            rearRight.setTargetPosition(-targetPosition);
-            frontLeft.setTargetPosition(-targetPosition);
-            frontRight.setTargetPosition(targetPosition);
-
+        switch  (strafeDirection){
+            case Left:
+                telemetry.addLine("strafing left");
+                telemetry.update();
+                rearLeft.setTargetPosition(targetPosition);
+                rearRight.setTargetPosition(-targetPosition);
+                frontLeft.setTargetPosition(-targetPosition);
+                frontRight.setTargetPosition(targetPosition);
+                break;
+            case Right:
+                telemetry.addLine("strafing right");
+                telemetry.update();
+                rearLeft.setTargetPosition(-targetPosition);
+                rearRight.setTargetPosition(targetPosition);
+                frontLeft.setTargetPosition(targetPosition);
+                frontRight.setTargetPosition(-targetPosition);
+                break;
+            case Forward:
+                telemetry.addLine("moving forward");
+                telemetry.update();
+                rearLeft.setTargetPosition(targetPosition);
+                rearRight.setTargetPosition(targetPosition);
+                frontLeft.setTargetPosition(targetPosition);
+                frontRight.setTargetPosition(targetPosition);
+                break;
+            case Backward:
+                telemetry.addLine("moving backward");
+                telemetry.update();
+                rearLeft.setTargetPosition(-targetPosition);
+                rearRight.setTargetPosition(-targetPosition);
+                frontLeft.setTargetPosition(-targetPosition);
+                frontRight.setTargetPosition(-targetPosition);
+                break;
         }
-        //Right Strafe
-        if(strafeDirection == StrafeDirection.Right) {
-            telemetry.addLine("strafing right");
-            telemetry.update();
-            rearLeft.setTargetPosition(-targetPosition);
-            rearRight.setTargetPosition(targetPosition);
-            frontLeft.setTargetPosition(targetPosition);
-            frontRight.setTargetPosition(-targetPosition);
-        }
-        //Moving Forward
-        if(strafeDirection == StrafeDirection.Forward){
-            telemetry.addLine("moving forward");
-            telemetry.update();
-            rearLeft.setTargetPosition(targetPosition);
-            rearRight.setTargetPosition(targetPosition);
-            frontLeft.setTargetPosition(targetPosition);
-            frontRight.setTargetPosition(targetPosition);
-
-        }
-        //Moving Backward
-        if(strafeDirection == StrafeDirection.Backward) {
-            telemetry.addLine("moving backward");
-            telemetry.update();
-            rearLeft.setTargetPosition(-targetPosition);
-            rearRight.setTargetPosition(-targetPosition);
-            frontLeft.setTargetPosition(-targetPosition);
-            frontRight.setTargetPosition(-targetPosition);
-        }
+        
         rearLeft.setPower(power);
         rearRight.setPower(power);
         frontLeft.setPower(power);
