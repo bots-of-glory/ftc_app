@@ -35,10 +35,7 @@ public class AutonomousCommon  {
         rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
         switch  (strafeDirection){
             case Left:
@@ -74,7 +71,12 @@ public class AutonomousCommon  {
                 frontRight.setTargetPosition(-targetPosition);
                 break;
         }
-        
+
+        rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
         rearLeft.setPower(power);
         rearRight.setPower(power);
         frontLeft.setPower(power);
