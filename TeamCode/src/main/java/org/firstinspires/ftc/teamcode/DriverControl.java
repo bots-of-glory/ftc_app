@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "DriverControl" , group = "testOp")
 //@Disabled
 
-public class driverControl extends LinearOpMode
+public class DriverControl extends LinearOpMode
 {
     //DcMotors
     private DcMotor frontLeft;      //1     Hub1 P0

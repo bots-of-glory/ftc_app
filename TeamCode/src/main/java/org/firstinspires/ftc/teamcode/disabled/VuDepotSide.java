@@ -16,8 +16,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
-@Autonomous (name="VuDepotSide ", group="Vuforia Autonomous")
-@Disabled
+@Autonomous (name="VuDepotSide", group="Competition Autonomous")
 public class VuDepotSide extends LinearOpMode{
     MasterVision vision;
     SampleRandomizedPositions goldPosition;
@@ -68,7 +67,7 @@ public class VuDepotSide extends LinearOpMode{
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;// recommended camera direction
         parameters.vuforiaLicenseKey = "AbVGrK7/////AAABmV5qNYRo8EpalbdT9iVSnmNR6wynVnTYxdfuU0jrIQJY3/bNzMRAOB9ew/OVmuVwRluGP3sUUHaNIgpXOii6OX5JQHTGyOeDMkVtqPdvynUdw7hRhLL2a8L8nQzJdH4jrKTCB6hAykKflqR4dykoml54fOnuTuXzGgwydwHCkcwt3UnDy/kCMrmSSx/9hBW21N4m6vhqzM9cdhUAGvvQAJPEE7WjrfT14Z4onzZXM185HCLKIEXcaJx10MaGO/xHchVtbvMGB2zDzFJ57uG2+AJopJtI+Qh1anzqoPnolZMUwJHRBhQnxis+QGpoL1RiJ6HqTRQr5mAEuP3q4wX5I1WXydNah5JoLgekylpWKANr\n";
 
-        vision = new MasterVision(parameters, hardwareMap, false, MasterVision.TFLiteAlgorithm.INFER_LEFT);
+        vision = new MasterVision(parameters, hardwareMap, true, MasterVision.TFLiteAlgorithm.INFER_LEFT);
         vision.init();// enables the camera overlay. this will take a couple of seconds
         vision.enable();// enables the tracking algorithms. this might also take a little time
 
@@ -96,10 +95,17 @@ public class VuDepotSide extends LinearOpMode{
 
 
 
+//-------------------Place Marker Start--------------------------------------------------
                     armServo.setPosition(0.0);
+                    sleep(400); //wait
+//-------------------Block End--------------------------------------------------
 
-                    sleep(500); //wait
-//-----------------------------Place Marker End----
+//-----------------------------Lift Up(lower robot) Start-------------------------------------------
+                    operateLift(1, 1, 5);
+                    //Wait 1 second
+                    sleep(500);
+//-----------------------------Lift Up(lower robot) End---------------------------------------------
+
 
 //-----------------------------Strafe off Lander Start----------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -118,29 +124,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.6);
                     frontRight.setTargetPosition(-800);
                     frontRight.setPower(.5);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -165,29 +155,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.5);
                     frontRight.setTargetPosition(500);
                     frontRight.setPower(.5);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -212,29 +186,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.5);
                     frontRight.setTargetPosition(1750);
                     frontRight.setPower(.5);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -259,29 +217,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.9);
                     frontRight.setTargetPosition(1300);
                     frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -299,37 +241,21 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(800);
+                    rearLeft.setTargetPosition(500);
                     rearLeft.setPower(.5);
-                    rearRight.setTargetPosition(-800);
+                    rearRight.setTargetPosition(-500);
                     rearRight.setPower(.5);
-                    frontLeft.setTargetPosition(-800);
+                    frontLeft.setTargetPosition(-500);
                     frontLeft.setPower(.5);
-                    frontRight.setTargetPosition(800);
+                    frontRight.setTargetPosition(500);
                     frontRight.setPower(.5);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -355,29 +281,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.9);
                     frontRight.setTargetPosition(2200);
                     frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -403,29 +313,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.9);
                     frontRight.setTargetPosition(-500);
                     frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -433,7 +327,7 @@ public class VuDepotSide extends LinearOpMode{
                     frontRight.setPower(0);
 //-----------------------------Turn Clockwise End------------------------------------------------
 
-                    //-----------------------------Turn Clockwise Start----------------------------------------------
+//-----------------------------Turn Counterclockwise Start----------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -444,83 +338,19 @@ public class VuDepotSide extends LinearOpMode{
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(500);
                     rearLeft.setPower(.9);
-                    rearRight.setTargetPosition(-500);
+                    rearRight.setTargetPosition(500);
                     rearRight.setPower(.9);
-                    frontLeft.setTargetPosition(-500);
+                    frontLeft.setTargetPosition(500);
                     frontLeft.setPower(.9);
                     frontRight.setTargetPosition(500);
                     frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    rearLeft.setPower(0);
-                    rearRight.setPower(0);
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-//-----------------------------Turn Clockwise End------------------------------------------------
-
-
-                    //-----------------------------Turn Counterclockwise Start----------------------------------------------
-                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(1000);
-                    rearLeft.setPower(.9);
-                    rearRight.setTargetPosition(1000);
-                    rearRight.setPower(.9);
-                    frontLeft.setTargetPosition(1000);
-                    frontLeft.setPower(.9);
-                    frontRight.setTargetPosition(1000);
-                    frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -531,58 +361,8 @@ public class VuDepotSide extends LinearOpMode{
 
 //-----------------------------Place Marker Start---------------------------------------------------
                     armServo.setPosition(0.7);
-
                     sleep(500); //wait
 //-----------------------------Place Marker End-----------------------------------------------------
-
-                    //-----------------------------Turn Counterclockwise Start----------------------------------------------
-                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-500);
-                    rearLeft.setPower(.9);
-                    rearRight.setTargetPosition(-500);
-                    rearRight.setPower(.9);
-                    frontLeft.setTargetPosition(-500);
-                    frontLeft.setPower(.9);
-                    frontRight.setTargetPosition(-500);
-                    frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
-                    }
-                    rearLeft.setPower(0);
-                    rearRight.setPower(0);
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-//-----------------------------Turn Clockwise End------------------------------------------------
-
-
 
 //-----------------------------Turn Counterclockwise Start----------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -601,29 +381,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.9);
                     frontRight.setTargetPosition(2300);
                     frontRight.setPower(.9);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -648,29 +412,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(.6);
                     frontRight.setTargetPosition(-2000);
                     frontRight.setPower(.5);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -696,29 +444,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(1);
                     frontRight.setTargetPosition(4800);
                     frontRight.setPower(1);
-                    while (rearLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (rearRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (rearRight.isBusy() && opModeIsActive()) {
                     }
-                    while (frontLeft.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontLeft.isBusy() && opModeIsActive()) {
                     }
-                    while (frontRight.isBusy() &&
-
-                            opModeIsActive())
-
-                    {
+                    while (frontRight.isBusy() && opModeIsActive()) {
                     }
                     rearLeft.setPower(0);
                     rearRight.setPower(0);
@@ -726,11 +458,8 @@ public class VuDepotSide extends LinearOpMode{
                     frontRight.setPower(0);
 //-----------------------------Straight End----------------------------------------------
 
-
                     sleep(25000);
 
-
-//----------------------------------------------------------------
                 }
                 break;
 
@@ -764,10 +493,12 @@ public class VuDepotSide extends LinearOpMode{
 
 
 
-                case CENTER: {                    telemetry.addLine("going straight");
+                case CENTER: {
+                    telemetry.addLine("going straight");
 
 
                     vision.shutdown();
+
 
                     //-------------------Place Marker Start--------------------------------------------------
                     armServo.setPosition(0.0);
@@ -780,73 +511,10 @@ public class VuDepotSide extends LinearOpMode{
                     operateLift(1, 1, 5);
                     //Wait 1 second
                     sleep(500);
-//-----------------------------Lift Up(lower robot) End---------------------------------------------
+//-----------------------------Lift Up(lower robot) End----------------------------------------------
 
-                    //----------------------Strafe off Lander Start-------------------------------------
-                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    liftMotor.setPower(0.1);
-                    rearLeft.setTargetPosition(800);
-                    rearLeft.setPower(0.5);
-                    rearRight.setTargetPosition(-800);
-                    rearRight.setPower(0.5);
-                    frontLeft.setTargetPosition(-800);
-                    frontLeft.setPower(0.6);
-                    frontRight.setTargetPosition(800);
-                    frontRight.setPower(0.5);
-                    while (rearLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (rearRight.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontRight.isBusy() && opModeIsActive()) {
-                    }
-                    liftMotor.setPower(0);
-                    rearLeft.setPower(0);
-                    rearRight.setPower(0);
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
 
-                    //----------------------Straight off Lander Start-------------------------------------
-                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-1000);
-                    rearLeft.setPower(0.5);
-                    rearRight.setTargetPosition(-1000);
-                    rearRight.setPower(0.5);
-                    frontLeft.setTargetPosition(-1000);
-                    frontLeft.setPower(0.5);
-                    frontRight.setTargetPosition(-1000);
-                    frontRight.setPower(0.5);
-                    while (rearLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (rearRight.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontRight.isBusy() && opModeIsActive()) {
-                    }
-                    rearLeft.setPower(0);
-                    rearRight.setPower(0);
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
-
-                    //----------------------Strafe Into Mineral Position-------------------------------------
+//-----------------------------Strafe off Lander Start----------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -856,13 +524,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(-800);
-                    rearLeft.setPower(0.5);
+                    rearLeft.setPower(.5);
                     rearRight.setTargetPosition(800);
-                    rearRight.setPower(0.5);
+                    rearRight.setPower(.5);
                     frontLeft.setTargetPosition(800);
-                    frontLeft.setPower(0.5);
+                    frontLeft.setPower(.5);
                     frontRight.setTargetPosition(-800);
-                    frontRight.setPower(0.5);
+                    frontRight.setPower(.5);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
                     while (rearRight.isBusy() && opModeIsActive()) {
@@ -875,9 +543,9 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setPower(0);
                     frontLeft.setPower(0);
                     frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
+//-----------------------------Strafe off Lander End------------------------------------------------
 
-                    //----------------------Straight Into Mineral-------------------------------------
+//-----------------------------Straight off Lander Start--------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -886,13 +554,115 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-2500);
+                    rearLeft.setTargetPosition(500);
+                    rearLeft.setPower(.5);
+                    rearRight.setTargetPosition(500);
+                    rearRight.setPower(.5);
+                    frontLeft.setTargetPosition(500);
+                    frontLeft.setPower(.5);
+                    frontRight.setTargetPosition(500);
+                    frontRight.setPower(.5);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Straight off Lander End----------------------------------------------
+
+//-----------------------------Get in Position for Depot Start--------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(800);
+                    rearLeft.setPower(.5);
+                    rearRight.setTargetPosition(-800);
+                    rearRight.setPower(.5);
+                    frontLeft.setTargetPosition(-800);
+                    frontLeft.setPower(.5);
+                    frontRight.setTargetPosition(800);
+                    frontRight.setPower(.5);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Get in Position for Depot End----------------------------------------
+
+
+//-----------------------------Straight to Depot Start----------------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(3640);
+                    rearLeft.setPower(.9);
+                    rearRight.setTargetPosition(3640);
+                    rearRight.setPower(.9);
+                    frontLeft.setTargetPosition(3640);
+                    frontLeft.setPower(.9);
+                    frontRight.setTargetPosition(3640);
+                    frontRight.setPower(.9);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Straight to Depot End------------------------------------------------
+
+
+//-----------------------------Place Marker Start---------------------------------------------------
+                    armServo.setPosition(0.7);
+                    sleep(600); //wait
+
+//-----------------------------Place Marker End-----------------------------------------------------
+
+
+//-----------------------------Turn 45 Degrees Counterclockwise Start--------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(-640);
                     rearLeft.setPower(1);
-                    rearRight.setTargetPosition(-2500);
+                    rearRight.setTargetPosition(640);
                     rearRight.setPower(1);
-                    frontLeft.setTargetPosition(-2500);
+                    frontLeft.setTargetPosition(-640);
                     frontLeft.setPower(1);
-                    frontRight.setTargetPosition(-2500);
+                    frontRight.setTargetPosition(640);
                     frontRight.setPower(1);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
@@ -906,25 +676,78 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setPower(0);
                     frontLeft.setPower(0);
                     frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
+//-----------------------------Turn 45 Degrees Counterclockwise End---------------------------------
 
-                    //-------------------Place Marker Start--------------------------------------------------
-                    armServo.setPosition(0.7);
-                    sleep(400); //wait
+//-----------------------------Strafe Towards Wall Start--------------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(-2000);
+                    rearLeft.setPower(.5);
+                    rearRight.setTargetPosition(2000);
+                    rearRight.setPower(.5);
+                    frontLeft.setTargetPosition(2000);
+                    frontLeft.setPower(.5);
+                    frontRight.setTargetPosition(-2000);
+                    frontRight.setPower(.5);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Strafe Towards Wall End----------------------------------------------
 
+//-----------------------------Backwards Towards Crater Start-----------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(-6050);
+                    rearLeft.setPower(1);
+                    rearRight.setTargetPosition(-6050);
+                    rearRight.setPower(1);
+                    frontLeft.setTargetPosition(-6050);
+                    frontLeft.setPower(1);
+                    frontRight.setTargetPosition(-6050);
+                    frontRight.setPower(1);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Backwards Towards Crater End-------------------------------------------
 
-                    //-------------------Block End--------------------------------------------------
-
-                    //-----------------------------Lift Down Start------------------------------------------------------
+//-----------------------------Lift Down Start------------------------------------------------------
                     operateLift(0, 1, 5);
                     //Wait 1 second
                     sleep(500);
 //-----------------------------Lift Down End--------------------------------------------------------
 
-                    //----------------------WAIT-------------------------------------
-                    sleep(25000);
-                    //----------------------------------------------------------------
 
+                    sleep(25000);
 
 
                 }
@@ -963,10 +786,10 @@ public class VuDepotSide extends LinearOpMode{
 
                     //-------------------Block End--------------------------------------------------
 
-//-----------------------------Lift Up(lower robot) Start-------------------------------------------
-//        operateLift(1, 0.8, 5);
-//        //Wait 1 second
-//        sleep(500);
+                    //-----------------------------Lift Up(lower robot) Start-------------------------------------------
+                    operateLift(1, 1, 5);
+                    //Wait 1 second
+                    sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
 
 //----------------------Strafe off Lander Start-------------------------------------
@@ -1040,13 +863,13 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-1200);
+                    rearLeft.setTargetPosition(-1000);
                     rearLeft.setPower(0.5);
-                    rearRight.setTargetPosition(1200);
+                    rearRight.setTargetPosition(1000);
                     rearRight.setPower(0.5);
-                    frontLeft.setTargetPosition(1200);
+                    frontLeft.setTargetPosition(1000);
                     frontLeft.setPower(0.5);
-                    frontRight.setTargetPosition(-1200);
+                    frontRight.setTargetPosition(-1000);
                     frontRight.setPower(0.5);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
@@ -1135,13 +958,13 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-2500);
+                    rearLeft.setTargetPosition(-2200);
                     rearLeft.setPower(.5);
-                    rearRight.setTargetPosition(2500);
+                    rearRight.setTargetPosition(2200);
                     rearRight.setPower(.5);
-                    frontLeft.setTargetPosition(2500);
+                    frontLeft.setTargetPosition(2200);
                     frontLeft.setPower(.6);
-                    frontRight.setTargetPosition(-2500);
+                    frontRight.setTargetPosition(-2200);
                     frontRight.setPower(.5);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
@@ -1194,13 +1017,6 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setPower(0);
                     frontRight.setPower(0);
 //-----------------------------Straight to Crater End------------------------------------------------
-
-//-----------------------------Lift Down Start-------------------------------------------
-//        operateLift(0, 1, 5);
-                    //Wait 1 second
-//        sleep(500);
-//-----------------------------Lift Down End---------------------------------------------
-
                     sleep(25000);
                 }
 
@@ -1234,10 +1050,7 @@ public class VuDepotSide extends LinearOpMode{
 
 
                 case UNKNOWN: {
-                    telemetry.addLine("going straight");
-
-
-                    vision.shutdown();
+                    telemetry.addLine("staying put");
 
                     //-------------------Place Marker Start--------------------------------------------------
                     armServo.setPosition(0.0);
@@ -1252,71 +1065,8 @@ public class VuDepotSide extends LinearOpMode{
                     sleep(500);
 //-----------------------------Lift Up(lower robot) End---------------------------------------------
 
-                    //----------------------Strafe off Lander Start-------------------------------------
-                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    liftMotor.setPower(0.1);
-                    rearLeft.setTargetPosition(800);
-                    rearLeft.setPower(0.5);
-                    rearRight.setTargetPosition(-800);
-                    rearRight.setPower(0.5);
-                    frontLeft.setTargetPosition(-800);
-                    frontLeft.setPower(0.6);
-                    frontRight.setTargetPosition(800);
-                    frontRight.setPower(0.5);
-                    while (rearLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (rearRight.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontRight.isBusy() && opModeIsActive()) {
-                    }
-                    liftMotor.setPower(0);
-                    rearLeft.setPower(0);
-                    rearRight.setPower(0);
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
 
-                    //----------------------Straight off Lander Start-------------------------------------
-                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-1000);
-                    rearLeft.setPower(0.5);
-                    rearRight.setTargetPosition(-1000);
-                    rearRight.setPower(0.5);
-                    frontLeft.setTargetPosition(-1000);
-                    frontLeft.setPower(0.5);
-                    frontRight.setTargetPosition(-1000);
-                    frontRight.setPower(0.5);
-                    while (rearLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (rearRight.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontLeft.isBusy() && opModeIsActive()) {
-                    }
-                    while (frontRight.isBusy() && opModeIsActive()) {
-                    }
-                    rearLeft.setPower(0);
-                    rearRight.setPower(0);
-                    frontLeft.setPower(0);
-                    frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
-
-                    //----------------------Strafe Into Mineral Position-------------------------------------
+//-----------------------------Strafe off Lander Start----------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -1326,13 +1076,13 @@ public class VuDepotSide extends LinearOpMode{
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     rearLeft.setTargetPosition(-800);
-                    rearLeft.setPower(0.5);
+                    rearLeft.setPower(.5);
                     rearRight.setTargetPosition(800);
-                    rearRight.setPower(0.5);
+                    rearRight.setPower(.5);
                     frontLeft.setTargetPosition(800);
-                    frontLeft.setPower(0.5);
+                    frontLeft.setPower(.5);
                     frontRight.setTargetPosition(-800);
-                    frontRight.setPower(0.5);
+                    frontRight.setPower(.5);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
                     while (rearRight.isBusy() && opModeIsActive()) {
@@ -1345,9 +1095,9 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setPower(0);
                     frontLeft.setPower(0);
                     frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
+//-----------------------------Strafe off Lander End------------------------------------------------
 
-                    //----------------------Straight Into Mineral-------------------------------------
+//-----------------------------Straight off Lander Start--------------------------------------------
                     rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -1356,13 +1106,118 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    rearLeft.setTargetPosition(-2500);
+                    rearLeft.setTargetPosition(500);
+                    rearLeft.setPower(.5);
+                    rearRight.setTargetPosition(500);
+                    rearRight.setPower(.5);
+                    frontLeft.setTargetPosition(500);
+                    frontLeft.setPower(.5);
+                    frontRight.setTargetPosition(500);
+                    frontRight.setPower(.5);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Straight off Lander End----------------------------------------------
+
+//-----------------------------Get in Position for Depot Start--------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(800);
+                    rearLeft.setPower(.5);
+                    rearRight.setTargetPosition(-800);
+                    rearRight.setPower(.5);
+                    frontLeft.setTargetPosition(-800);
+                    frontLeft.setPower(.5);
+                    frontRight.setTargetPosition(800);
+                    frontRight.setPower(.5);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Get in Position for Depot End----------------------------------------
+
+
+//-----------------------------Straight to Depot Start----------------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(3640);
+                    rearLeft.setPower(.9);
+                    rearRight.setTargetPosition(3640);
+                    rearRight.setPower(.9);
+                    frontLeft.setTargetPosition(3640);
+                    frontLeft.setPower(.9);
+                    frontRight.setTargetPosition(3640);
+                    frontRight.setPower(.9);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Straight to Depot End------------------------------------------------
+
+
+//-----------------------------Place Marker Start---------------------------------------------------
+                    armServo.setPosition(0.7);
+                    sleep(600); //wait
+
+//-----------------------------Place Marker End-----------------------------------------------------
+
+
+//-----------------------------Turn 45 Degrees Counterclockwise Start--------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(-640);
                     rearLeft.setPower(1);
-                    rearRight.setTargetPosition(-2500);
+                    rearRight.setTargetPosition(640);
                     rearRight.setPower(1);
-                    frontLeft.setTargetPosition(-2500);
+                    frontLeft.setTargetPosition(-640);
                     frontLeft.setPower(1);
-                    frontRight.setTargetPosition(-2500);
+                    frontRight.setTargetPosition(640);
                     frontRight.setPower(1);
                     while (rearLeft.isBusy() && opModeIsActive()) {
                     }
@@ -1376,24 +1231,78 @@ public class VuDepotSide extends LinearOpMode{
                     rearRight.setPower(0);
                     frontLeft.setPower(0);
                     frontRight.setPower(0);
-                    //-------------------Block End--------------------------------------------------
+//-----------------------------Turn 45 Degrees Counterclockwise End---------------------------------
 
-                    //-------------------Place Marker Start--------------------------------------------------
-                    armServo.setPosition(0.7);
-                    sleep(400); //wait
+//-----------------------------Strafe Towards Wall Start--------------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(-2000);
+                    rearLeft.setPower(.5);
+                    rearRight.setTargetPosition(2000);
+                    rearRight.setPower(.5);
+                    frontLeft.setTargetPosition(2000);
+                    frontLeft.setPower(.5);
+                    frontRight.setTargetPosition(-2000);
+                    frontRight.setPower(.5);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Strafe Towards Wall End----------------------------------------------
 
+//-----------------------------Backwards Towards Crater Start-----------------------------------------
+                    rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    rearLeft.setTargetPosition(-6050);
+                    rearLeft.setPower(1);
+                    rearRight.setTargetPosition(-6050);
+                    rearRight.setPower(1);
+                    frontLeft.setTargetPosition(-6050);
+                    frontLeft.setPower(1);
+                    frontRight.setTargetPosition(-6050);
+                    frontRight.setPower(1);
+                    while (rearLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (rearRight.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontLeft.isBusy() && opModeIsActive()) {
+                    }
+                    while (frontRight.isBusy() && opModeIsActive()) {
+                    }
+                    rearLeft.setPower(0);
+                    rearRight.setPower(0);
+                    frontLeft.setPower(0);
+                    frontRight.setPower(0);
+//-----------------------------Backwards Towards Crater End-------------------------------------------
 
-                    //-------------------Block End--------------------------------------------------
-
-                    //-----------------------------Lift Down Start------------------------------------------------------
+//-----------------------------Lift Down Start------------------------------------------------------
                     operateLift(0, 1, 5);
                     //Wait 1 second
                     sleep(500);
 //-----------------------------Lift Down End--------------------------------------------------------
 
-                    //----------------------WAIT-------------------------------------
                     sleep(25000);
-                    //----------------------------------------------------------------
+
                 }
                 break;
 
@@ -1470,12 +1379,12 @@ public class VuDepotSide extends LinearOpMode{
         if (opModeIsActive()) {
             if (position == 0) {
                 //Change This Number to Determine the Upper Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 8200
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() - 7750
                 );
                 liftMotor.setPower(-speed);
             } else {
                 //Change This Number to Determine the Lower Position of the Lift
-                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 8200
+                liftMotor.setTargetPosition(liftMotor.getCurrentPosition() + 7750
                 );
                 liftMotor.setPower(-speed);
             }

@@ -1,6 +1,6 @@
 //Goes into alliances's crater
 //Right
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.disabled;
 
 import android.hardware.Sensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsAnalogOpticalDistanceSensor;
