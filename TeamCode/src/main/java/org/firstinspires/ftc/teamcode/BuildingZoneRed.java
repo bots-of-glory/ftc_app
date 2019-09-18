@@ -49,5 +49,8 @@ public class BuildingZoneRed extends LinearOpMode {
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
+        AutonomousCommon.moveToRedPlatform();
+        AutonomousCommon.lowerFlappers();
+        AutonomousCommon.moveToRedSkybridge();
     }
 }
