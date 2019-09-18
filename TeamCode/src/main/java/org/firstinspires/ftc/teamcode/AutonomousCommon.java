@@ -99,6 +99,20 @@ public class AutonomousCommon  {
         telemetry.update();
     }
 
+    public static void moveToPlatform() {
+        //add logic here
+        //move forward to platform
+        //strafe right to platform
+        //or go in angle
+    };
+    public static void lowerFlappers(){
+        //drop flapper to grab platform
+    };
+    public static void moveToSkybridge() {
+        //reverse pull platform to building site + 10pts
+        //pull forward to sky bridge
+    };
+
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
