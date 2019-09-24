@@ -53,5 +53,6 @@ public class BuildingZoneBlue extends LinearOpMode {
         AutonomousCommon.lowerFlappers();
         AutonomousCommon.movePlatformToBuildingSite();
         AutonomousCommon.moveToBlueSkybridge();
+
     }
 }

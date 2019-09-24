@@ -49,5 +49,14 @@ public class LoadingZoneBlue extends LinearOpMode {
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
+        //1. Move to Legos
+        //2. Locate Skystone
+        //3. Grab Skystone
+        //4. Move to Building Zone
+        //5. Drop Lego on platform
+        //6. Move back to Legos
+        //7. Locate Skystone
+        //8. Move to Building Zone
+        //9. End Program
     }
 }
