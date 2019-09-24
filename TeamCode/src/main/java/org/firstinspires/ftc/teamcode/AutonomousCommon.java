@@ -122,7 +122,9 @@ public class AutonomousCommon  {
         //reverse pull platform to building site + 10pts
         //pull forward to sky bridge
     };
-
+    public static void movePlatformToBuildingSite(){
+        //drag the platform back to the building site
+    };
 
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
