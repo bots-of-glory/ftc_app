@@ -48,6 +48,16 @@ public class LoadingZoneRed extends LinearOpMode {
         armServo.setDirection(Servo.Direction.FORWARD);
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
+        AutonomousCommon.moveToLegos();
+        AutonomousCommon.locateSkystone(AutonomousCommon.PlayfieldSide.Red);
+        AutonomousCommon.grabLego();
+        AutonomousCommon.moveToBuildingZone(AutonomousCommon.PlayfieldSide.Red);
+        AutonomousCommon.dropLego();
 
+        AutonomousCommon.moveToLegos();
+        AutonomousCommon.locateSkystone(AutonomousCommon.PlayfieldSide.Red);
+        AutonomousCommon.grabLego();
+        AutonomousCommon.moveToBuildingZone(AutonomousCommon.PlayfieldSide.Red);
+        //9. End Program
     }
 }

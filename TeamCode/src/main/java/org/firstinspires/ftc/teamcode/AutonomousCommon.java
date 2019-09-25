@@ -99,18 +99,12 @@ public class AutonomousCommon  {
         telemetry.update();
     }
 
-    public static void moveToBluePlatform() {
+    public static void moveToPlatform(PlayfieldSide side) {
         //add logic here
         //move forward to platform
         //strafe right to platform
         //or go in angle
-    };
-    public static void moveToRedPlatform() {
-        //add logic here
-        //move forward to platform
-        //strafe left to platform
-        //or go in angle
-    };
+    }
     public static void lowerFlappers(){
         //drop flapper to grab platform
     }
@@ -124,16 +118,19 @@ public class AutonomousCommon  {
     public static void moveToLegos(){
 
     }
-    public  static void locateSkystone(){
+    public  static void locateSkystone(PlayfieldSide side){
 
     }
     public static void grabLego(){
 
     }
-    public static void moveToBuildingZone(){
+    public static void moveToBuildingZone(PlayfieldSide side){
+
+
+
 
     }
-    public static void dropLego () {
+    public static void dropLego() {
 
     }
     //sleep from LinearOpMode class

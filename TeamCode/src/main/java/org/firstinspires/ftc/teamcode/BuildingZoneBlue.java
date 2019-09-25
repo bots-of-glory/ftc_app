@@ -49,7 +49,7 @@ public class BuildingZoneBlue extends LinearOpMode {
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
-        AutonomousCommon.moveToBluePlatform();
+        AutonomousCommon.moveToPlatform(AutonomousCommon.PlayfieldSide.Blue);
         AutonomousCommon.lowerFlappers();
         AutonomousCommon.movePlatformToBuildingSite();
         AutonomousCommon.moveToSkybridge(AutonomousCommon.PlayfieldSide.Blue);
