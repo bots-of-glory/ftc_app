@@ -137,6 +137,9 @@ public class AutonomousCommon  {
     public static void moveToBuildingZone(){
 
     }
+    public static void dropLego () {
+
+    }
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
