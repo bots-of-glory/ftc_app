@@ -125,7 +125,12 @@ public class AutonomousCommon  {
     public static void movePlatformToBuildingSite(){
         //drag the platform back to the building site
     };
+    public static void moveToLegos(){
 
+    }
+    public  static void locateSkystone(){
+
+    }
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
