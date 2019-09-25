@@ -131,6 +131,12 @@ public class AutonomousCommon  {
     public  static void locateSkystone(){
 
     }
+    public static void grabLego(){
+
+    }
+    public static void moveToBuildingZone(){
+
+    }
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
