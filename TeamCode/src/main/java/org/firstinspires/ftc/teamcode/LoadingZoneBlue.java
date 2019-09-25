@@ -54,6 +54,7 @@ public class LoadingZoneBlue extends LinearOpMode {
         AutonomousCommon.grabLego();
         AutonomousCommon.moveToBuildingZone();
         AutonomousCommon.dropLego();
+
         AutonomousCommon.moveToLegos();
         AutonomousCommon.locateSkystone();
         AutonomousCommon.grabLego();

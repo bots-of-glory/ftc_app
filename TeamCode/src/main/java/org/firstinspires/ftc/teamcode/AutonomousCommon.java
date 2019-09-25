@@ -113,18 +113,14 @@ public class AutonomousCommon  {
     };
     public static void lowerFlappers(){
         //drop flapper to grab platform
-    };
-    public static void moveToBlueSkybridge() {
+    }
+    public static void moveToSkybridge(PlayfieldSide side) {
         //reverse pull platform to building site + 10pts
         //pull forward to sky bridge
-    };
-    public static void moveToRedSkybridge() {
-        //reverse pull platform to building site + 10pts
-        //pull forward to sky bridge
-    };
+    }
     public static void movePlatformToBuildingSite(){
         //drag the platform back to the building site
-    };
+    }
     public static void moveToLegos(){
 
     }
@@ -153,5 +149,9 @@ public class AutonomousCommon  {
         Right,
         Forward,
         Backward
+    }
+    public enum PlayfieldSide{
+        Blue,
+        Red
     }
 }

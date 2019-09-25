@@ -52,6 +52,6 @@ public class BuildingZoneRed extends LinearOpMode {
         AutonomousCommon.moveToRedPlatform();
         AutonomousCommon.lowerFlappers();
         AutonomousCommon.movePlatformToBuildingSite();
-        AutonomousCommon.moveToRedSkybridge();
+        AutonomousCommon.moveToSkybridge(AutonomousCommon.PlayfieldSide.Red);
     }
 }
