@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import org.firstinspires.ftc.teamcode.AutonomousCommon.PlayfieldSide;
 @Autonomous (name="LoadingZoneRed", group="Competition Autonomous")
 public class LoadingZoneRed extends SkystoneBase {
     private ElapsedTime runtime = new ElapsedTime();
@@ -12,15 +12,15 @@ public class LoadingZoneRed extends SkystoneBase {
     public void runOpMode() throws InterruptedException {
         initMotors();
 
-        AutonomousCommon.moveToLegos(movementMotors);
-        AutonomousCommon.locateSkystone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
-        AutonomousCommon.grabLego();
-        AutonomousCommon.moveToBuildingZone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
-        AutonomousCommon.dropLego();
+        moveToLegos(movementMotors);
+        locateSkystone(movementMotors,PlayfieldSide.Red);
+        grabLego();
+        moveToBuildingZone(movementMotors,PlayfieldSide.Red);
+        dropLego();
 
-        AutonomousCommon.moveToLegos(movementMotors);
-        AutonomousCommon.locateSkystone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
-        AutonomousCommon.grabLego();
-        AutonomousCommon.moveToBuildingZone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
+        moveToLegos(movementMotors);
+        locateSkystone(movementMotors,PlayfieldSide.Red);
+        grabLego();
+        moveToBuildingZone(movementMotors,PlayfieldSide.Red);
     }
 }

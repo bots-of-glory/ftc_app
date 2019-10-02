@@ -62,4 +62,35 @@ public class SkystoneBase extends LinearOpMode {
         flapperMotors[FlapperServos.Left.getValue()] = leftArmServo;
         flapperMotors[FlapperServos.Right.getValue()] = rightArmServo;
     }
+    public static void moveToPlatform(DcMotor[]movementMotors,PlayfieldSide side) {
+        //add logic here
+        //move forward to platform
+        //strafe right to platform
+        //or go in angle
+    }
+    public static void lowerFlappers(Servo[]flapperMotors){
+        //drop flapper to grab platform
+    }
+    public static void moveToSkybridge(DcMotor[] movementMotors,PlayfieldSide side) {
+        //reverse pull platform to building site + 10pts
+        //pull forward to sky bridge
+    }
+    public static void movePlatformToBuildingSite(DcMotor[] movementMotors){
+        //drag the platform back to the building site
+    }
+    public static void moveToLegos(DcMotor[] movementMotors){
+
+    }
+    public  static void locateSkystone(DcMotor[] movementMotors,PlayfieldSide side){
+
+    }
+    public static void grabLego(){
+
+    }
+    public static void moveToBuildingZone(DcMotor[] movementMotors,PlayfieldSide side){
+
+    }
+    public static void dropLego() {
+
+    }
 }

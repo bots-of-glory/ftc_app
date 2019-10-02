@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import org.firstinspires.ftc.teamcode.AutonomousCommon.PlayfieldSide;
 
 @Autonomous (name="BuildingZoneRed", group="Competition Autonomous")
 public class BuildingZoneRed extends SkystoneBase {
@@ -14,9 +14,9 @@ public class BuildingZoneRed extends SkystoneBase {
 
         initMotors();
 
-        AutonomousCommon.moveToPlatform(movementMotors,AutonomousCommon.PlayfieldSide.Red);
-        AutonomousCommon.lowerFlappers(flapperMotors);
-        AutonomousCommon.movePlatformToBuildingSite(movementMotors);
-        AutonomousCommon.moveToSkybridge(movementMotors,AutonomousCommon.PlayfieldSide.Red);
+        moveToPlatform(movementMotors,PlayfieldSide.Red);
+        lowerFlappers(flapperMotors);
+        movePlatformToBuildingSite(movementMotors);
+        moveToSkybridge(movementMotors,PlayfieldSide.Red);
     }
 }
