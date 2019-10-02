@@ -12,6 +12,38 @@ import java.util.List;
 
 public class AutonomousCommon  {
 
+    public static void moveToPlatform(DcMotor[]movementMotors,PlayfieldSide side) {
+        //add logic here
+        //move forward to platform
+        //strafe right to platform
+        //or go in angle
+    }
+    public static void lowerFlappers(){
+        //drop flapper to grab platform
+    }
+    public static void moveToSkybridge(DcMotor[] movementMotors,PlayfieldSide side) {
+        //reverse pull platform to building site + 10pts
+        //pull forward to sky bridge
+    }
+    public static void movePlatformToBuildingSite(DcMotor[] movementMotors){
+        //drag the platform back to the building site
+    }
+    public static void moveToLegos(DcMotor[] movementMotors){
+
+    }
+    public  static void locateSkystone(DcMotor[] movementMotors,PlayfieldSide side){
+
+    }
+    public static void grabLego(){
+
+    }
+    public static void moveToBuildingZone(DcMotor[] movementMotors,PlayfieldSide side){
+
+    }
+    public static void dropLego() {
+
+    }
+
     public static void macanumBox(DcMotor frontLeft, DcMotor rearLeft,
                                   DcMotor frontRight, DcMotor rearRight,
                                   int targetPosition,double power, boolean opModeIsActive,
@@ -99,40 +131,6 @@ public class AutonomousCommon  {
         telemetry.update();
     }
 
-    public static void moveToPlatform(PlayfieldSide side) {
-        //add logic here
-        //move forward to platform
-        //strafe right to platform
-        //or go in angle
-    }
-    public static void lowerFlappers(){
-        //drop flapper to grab platform
-    }
-    public static void moveToSkybridge(PlayfieldSide side) {
-        //reverse pull platform to building site + 10pts
-        //pull forward to sky bridge
-    }
-    public static void movePlatformToBuildingSite(){
-        //drag the platform back to the building site
-    }
-    public static void moveToLegos(){
-
-    }
-    public  static void locateSkystone(PlayfieldSide side){
-
-    }
-    public static void grabLego(){
-
-    }
-    public static void moveToBuildingZone(PlayfieldSide side){
-
-
-
-
-    }
-    public static void dropLego() {
-
-    }
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
@@ -150,5 +148,20 @@ public class AutonomousCommon  {
     public enum PlayfieldSide{
         Blue,
         Red
+    }
+    public enum MovementMotors {
+        FrontLeft(0),
+        FrontRight(1),
+        RearRight(2),
+        RearLeft(3);
+        private final int value;
+
+        private MovementMotors(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }

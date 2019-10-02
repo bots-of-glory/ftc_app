@@ -49,9 +49,15 @@ public class BuildingZoneRed extends LinearOpMode {
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
-        AutonomousCommon.moveToPlatform(AutonomousCommon.PlayfieldSide.Red);
+        DcMotor[] movementMotors = new DcMotor[4];
+        movementMotors[AutonomousCommon.MovementMotors.FrontLeft.getValue()] = frontLeft;
+        movementMotors[AutonomousCommon.MovementMotors.FrontRight.getValue()] = frontRight;
+        movementMotors[AutonomousCommon.MovementMotors.RearRight.getValue()] = rearRight;
+        movementMotors[AutonomousCommon.MovementMotors.RearLeft.getValue()] = rearLeft;
+
+        AutonomousCommon.moveToPlatform(movementMotors,AutonomousCommon.PlayfieldSide.Red);
         AutonomousCommon.lowerFlappers();
-        AutonomousCommon.movePlatformToBuildingSite();
-        AutonomousCommon.moveToSkybridge(AutonomousCommon.PlayfieldSide.Red);
+        AutonomousCommon.movePlatformToBuildingSite(movementMotors);
+        AutonomousCommon.moveToSkybridge(movementMotors,AutonomousCommon.PlayfieldSide.Red);
     }
 }

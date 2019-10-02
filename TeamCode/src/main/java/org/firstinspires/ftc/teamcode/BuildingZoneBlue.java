@@ -11,6 +11,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
+import java.util.List;
+
 @Autonomous (name="BuildingZoneBlue", group="Competition Autonomous")
 public class BuildingZoneBlue extends LinearOpMode {
     MasterVision vision;
@@ -20,7 +22,8 @@ public class BuildingZoneBlue extends LinearOpMode {
     DcMotor rearLeft;
     DcMotor frontRight;
     DcMotor rearRight;
-    Servo armServo;
+    Servo leftArmServo;
+    Servo rightArmServo;
     GyroSensor sensorGyro;
     ModernRoboticsI2cGyro mrGyro;
 
@@ -37,7 +40,8 @@ public class BuildingZoneBlue extends LinearOpMode {
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
         sensorGyro = hardwareMap.gyroSensor.get("gyro");
-        armServo = hardwareMap.servo.get("armServo");
+        leftArmServo = hardwareMap.servo.get("leftArmServo");
+        rightArmServo = hardwareMap.servo.get("rightArmServo");
 
         //declare motor directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
@@ -45,14 +49,22 @@ public class BuildingZoneBlue extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
-        armServo.setDirection(Servo.Direction.FORWARD);
+        leftArmServo.setDirection(Servo.Direction.FORWARD);
+        rightArmServo.setDirection(Servo.Direction.FORWARD);
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
-        AutonomousCommon.moveToPlatform(AutonomousCommon.PlayfieldSide.Blue);
+        DcMotor[] movementMotors = new DcMotor[4];
+        movementMotors[AutonomousCommon.MovementMotors.FrontLeft.getValue()] = frontLeft;
+        movementMotors[AutonomousCommon.MovementMotors.FrontRight.getValue()] = frontRight;
+        movementMotors[AutonomousCommon.MovementMotors.RearRight.getValue()] = rearRight;
+        movementMotors[AutonomousCommon.MovementMotors.RearLeft.getValue()] = rearLeft;
+
+
+        AutonomousCommon.moveToPlatform(movementMotors,AutonomousCommon.PlayfieldSide.Blue);
         AutonomousCommon.lowerFlappers();
-        AutonomousCommon.movePlatformToBuildingSite();
-        AutonomousCommon.moveToSkybridge(AutonomousCommon.PlayfieldSide.Blue);
+        AutonomousCommon.movePlatformToBuildingSite(movementMotors);
+        AutonomousCommon.moveToSkybridge(movementMotors,AutonomousCommon.PlayfieldSide.Blue);
 
     }
 }

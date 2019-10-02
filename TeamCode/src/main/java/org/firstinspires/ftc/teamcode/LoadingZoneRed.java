@@ -48,16 +48,22 @@ public class LoadingZoneRed extends LinearOpMode {
         armServo.setDirection(Servo.Direction.FORWARD);
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
-        AutonomousCommon.moveToLegos();
-        AutonomousCommon.locateSkystone(AutonomousCommon.PlayfieldSide.Red);
+
+        DcMotor[] movementMotors = new DcMotor[4];
+        movementMotors[AutonomousCommon.MovementMotors.FrontLeft.getValue()] = frontLeft;
+        movementMotors[AutonomousCommon.MovementMotors.FrontRight.getValue()] = frontRight;
+        movementMotors[AutonomousCommon.MovementMotors.RearRight.getValue()] = rearRight;
+        movementMotors[AutonomousCommon.MovementMotors.RearLeft.getValue()] = rearLeft;
+
+        AutonomousCommon.moveToLegos(movementMotors);
+        AutonomousCommon.locateSkystone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
         AutonomousCommon.grabLego();
-        AutonomousCommon.moveToBuildingZone(AutonomousCommon.PlayfieldSide.Red);
+        AutonomousCommon.moveToBuildingZone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
         AutonomousCommon.dropLego();
 
-        AutonomousCommon.moveToLegos();
-        AutonomousCommon.locateSkystone(AutonomousCommon.PlayfieldSide.Red);
+        AutonomousCommon.moveToLegos(movementMotors);
+        AutonomousCommon.locateSkystone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
         AutonomousCommon.grabLego();
-        AutonomousCommon.moveToBuildingZone(AutonomousCommon.PlayfieldSide.Red);
-        //9. End Program
+        AutonomousCommon.moveToBuildingZone(movementMotors,AutonomousCommon.PlayfieldSide.Red);
     }
 }
