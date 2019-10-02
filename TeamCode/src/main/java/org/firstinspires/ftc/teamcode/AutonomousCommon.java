@@ -18,7 +18,7 @@ public class AutonomousCommon  {
         //strafe right to platform
         //or go in angle
     }
-    public static void lowerFlappers(){
+    public static void lowerFlappers(Servo[]flapperMotors){
         //drop flapper to grab platform
     }
     public static void moveToSkybridge(DcMotor[] movementMotors,PlayfieldSide side) {
@@ -148,6 +148,19 @@ public class AutonomousCommon  {
     public enum PlayfieldSide{
         Blue,
         Red
+    }
+    public enum FlapperServos{
+        Left(0),
+        Right(1);
+        private final int value;
+
+        private FlapperServos(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
     public enum MovementMotors {
         FrontLeft(0),

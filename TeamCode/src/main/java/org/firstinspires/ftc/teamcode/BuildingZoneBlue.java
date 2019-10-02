@@ -8,6 +8,11 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.AutonomousCommon.FlapperServos;
+import org.firstinspires.ftc.teamcode.AutonomousCommon.MovementMotors;
+import org.firstinspires.ftc.teamcode.AutonomousCommon.PlayfieldSide;
+
+
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
@@ -55,14 +60,18 @@ public class BuildingZoneBlue extends LinearOpMode {
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
         DcMotor[] movementMotors = new DcMotor[4];
-        movementMotors[AutonomousCommon.MovementMotors.FrontLeft.getValue()] = frontLeft;
-        movementMotors[AutonomousCommon.MovementMotors.FrontRight.getValue()] = frontRight;
-        movementMotors[AutonomousCommon.MovementMotors.RearRight.getValue()] = rearRight;
-        movementMotors[AutonomousCommon.MovementMotors.RearLeft.getValue()] = rearLeft;
+        movementMotors[MovementMotors.FrontLeft.getValue()] = frontLeft;
+        movementMotors[MovementMotors.FrontRight.getValue()] = frontRight;
+        movementMotors[MovementMotors.RearRight.getValue()] = rearRight;
+        movementMotors[MovementMotors.RearLeft.getValue()] = rearLeft;
+
+        Servo[] flapperMotors = new Servo[2];
+        flapperMotors[FlapperServos.Left.getValue()] = leftArmServo;
+        flapperMotors[FlapperServos.Right.getValue()] = rightArmServo;
 
 
         AutonomousCommon.moveToPlatform(movementMotors,AutonomousCommon.PlayfieldSide.Blue);
-        AutonomousCommon.lowerFlappers();
+        AutonomousCommon.lowerFlappers(flapperMotors);
         AutonomousCommon.movePlatformToBuildingSite(movementMotors);
         AutonomousCommon.moveToSkybridge(movementMotors,AutonomousCommon.PlayfieldSide.Blue);
 
