@@ -11,6 +11,8 @@ import org.firstinspires.ftc.teamcode.AutonomousCommon.PlayfieldSide;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
+import static org.firstinspires.ftc.teamcode.AutonomousCommon.*;
+
 public class SkystoneBase extends LinearOpMode {
     MasterVision vision;
     SampleRandomizedPositions goldPosition;
@@ -67,14 +69,20 @@ public class SkystoneBase extends LinearOpMode {
      * Moves the robot to the platform depending on the side.
      */
     public void moveToPlatform(DcMotor[]movementMotors,PlayfieldSide side) {
-        telemetry.addLine("Begin moveToPlatform");
+        telemetry.addLine("Begin moveToPlatform " + side.toString());
+        int targetPosition = 0;
+        this.opModeIsActive();
+        double power = 0.0;
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight, StrafeDirection.Forward,targetPosition,power,false);
         if(side==PlayfieldSide.Blue){
+            //AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Forward,Tar);
+
 
         }
         if(side==PlayfieldSide.Red){
 
         }
-        telemetry.addLine("End moveToPlatform");
+        telemetry.addLine("End moveToPlatform " + side.toString());
     }
 
     /**
