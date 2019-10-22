@@ -14,10 +14,10 @@ public class BuildingZoneBlue extends  SkystoneBase {
     public void runOpMode() throws InterruptedException {
         initMotors();
 
-        moveToPlatform(movementMotors,PlayfieldSide.Blue);
-        lowerFlappers(flapperMotors);
-        movePlatformToBuildingSite(movementMotors);
-        moveToSkybridge(movementMotors,PlayfieldSide.Blue);
+        moveToPlatform(PlayfieldSide.Blue);
+        lowerFlappers();
+        movePlatformToBuildingSite();
+        moveToSkybridge(PlayfieldSide.Blue);
 
     }
 }

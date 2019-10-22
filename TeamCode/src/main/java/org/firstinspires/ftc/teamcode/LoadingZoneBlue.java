@@ -13,15 +13,15 @@ public class LoadingZoneBlue extends SkystoneBase {
 
         initMotors();
 
-        moveToLegos(movementMotors);
-        locateSkystone(movementMotors,PlayfieldSide.Blue);
+        moveToLegos();
+        locateSkystone(PlayfieldSide.Blue);
         grabLego();
-        moveToBuildingZone(movementMotors,PlayfieldSide.Blue);
+        moveToBuildingZone(PlayfieldSide.Blue);
         dropLego();
 
-        moveToLegos(movementMotors);
-        locateSkystone(movementMotors,PlayfieldSide.Blue);
+        moveToLegos();
+        locateSkystone(PlayfieldSide.Blue);
         grabLego();
-        moveToBuildingZone(movementMotors,PlayfieldSide.Blue);
+        moveToBuildingZone(PlayfieldSide.Blue);
     }
 }

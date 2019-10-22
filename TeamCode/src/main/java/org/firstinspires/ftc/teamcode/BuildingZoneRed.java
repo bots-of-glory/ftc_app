@@ -14,9 +14,9 @@ public class BuildingZoneRed extends SkystoneBase {
 
         initMotors();
 
-        moveToPlatform(movementMotors,PlayfieldSide.Red);
-        lowerFlappers(flapperMotors);
-        movePlatformToBuildingSite(movementMotors);
-        moveToSkybridge(movementMotors,PlayfieldSide.Red);
+        moveToPlatform(PlayfieldSide.Red);
+        lowerFlappers();
+        movePlatformToBuildingSite();
+        moveToSkybridge(PlayfieldSide.Red);
     }
 }

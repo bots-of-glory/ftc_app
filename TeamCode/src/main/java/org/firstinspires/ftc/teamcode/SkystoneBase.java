@@ -68,7 +68,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Moves the robot to the platform depending on the side.
      */
-    public void moveToPlatform(DcMotor[]movementMotors,PlayfieldSide side) {
+    public void moveToPlatform(PlayfieldSide side) {
         telemetry.addLine("Begin moveToPlatform " + side.toString());
         int targetPosition = 0;
         this.opModeIsActive();
@@ -88,7 +88,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Lowers the flappers in position to grab the platform
      */
-    public  void lowerFlappers(Servo[]flapperMotors){
+    public  void lowerFlappers(){
         telemetry.addLine("Begin lowerFlappers");
 
         telemetry.addLine("End lowerFlappers");
@@ -97,7 +97,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Moves the robot to the platform depending on the side.
      */
-    public void moveToSkybridge(DcMotor[] movementMotors,PlayfieldSide side) {
+    public void moveToSkybridge(PlayfieldSide side) {
         telemetry.addLine("Begin moveToSkybridge");
 
         if(side==PlayfieldSide.Blue){
@@ -113,7 +113,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Moves the platform to the building site.
      */
-    public void movePlatformToBuildingSite(DcMotor[] movementMotors){
+    public void movePlatformToBuildingSite(){
         telemetry.addLine("Begin movePlatformToBuildingSite");
 
         telemetry.addLine("End movePlatformToBuildingSite");
@@ -122,7 +122,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Moves the robot to the Legos.
      */
-    public void moveToLegos(DcMotor[] movementMotors){
+    public void moveToLegos(){
         telemetry.addLine("Begin moveToLegos");
 
         telemetry.addLine("End moveToLegos");
@@ -131,7 +131,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Attempts to locate the Skystone.
      */
-    public  void locateSkystone(DcMotor[] movementMotors,PlayfieldSide side){
+    public  void locateSkystone(PlayfieldSide side){
         telemetry.addLine("Begin locateSkystone");
 
         if(side==PlayfieldSide.Blue){
@@ -155,7 +155,7 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * moves the robot to the building zone.
      */
-    public void moveToBuildingZone(DcMotor[] movementMotors,PlayfieldSide side){
+    public void moveToBuildingZone(PlayfieldSide side){
         telemetry.addLine("Begin moveToBuildingZone");
 
         if(side==PlayfieldSide.Blue){
