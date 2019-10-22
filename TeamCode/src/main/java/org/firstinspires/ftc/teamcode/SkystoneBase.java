@@ -73,7 +73,7 @@ public class SkystoneBase extends LinearOpMode {
         int targetPosition = 0;
         this.opModeIsActive();
         double power = 0.0;
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight, StrafeDirection.Forward,targetPosition,power,false);
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,targetPosition,power,opModeIsActive(),telemetry);
         if(side==PlayfieldSide.Blue){
             //AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Forward,Tar);
 
