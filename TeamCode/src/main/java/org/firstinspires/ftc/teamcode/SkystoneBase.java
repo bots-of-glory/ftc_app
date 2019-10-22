@@ -62,35 +62,108 @@ public class SkystoneBase extends LinearOpMode {
         flapperMotors[FlapperServos.Left.getValue()] = leftArmServo;
         flapperMotors[FlapperServos.Right.getValue()] = rightArmServo;
     }
-    public static void moveToPlatform(DcMotor[]movementMotors,PlayfieldSide side) {
-        //add logic here
-        //move forward to platform
-        //strafe right to platform
-        //or go in angle
-    }
-    public static void lowerFlappers(Servo[]flapperMotors){
-        //drop flapper to grab platform
-    }
-    public static void moveToSkybridge(DcMotor[] movementMotors,PlayfieldSide side) {
-        //reverse pull platform to building site + 10pts
-        //pull forward to sky bridge
-    }
-    public static void movePlatformToBuildingSite(DcMotor[] movementMotors){
-        //drag the platform back to the building site
-    }
-    public static void moveToLegos(DcMotor[] movementMotors){
 
-    }
-    public  static void locateSkystone(DcMotor[] movementMotors,PlayfieldSide side){
+    /**
+     * Moves the robot to the platform depending on the side.
+     */
+    public void moveToPlatform(DcMotor[]movementMotors,PlayfieldSide side) {
+        telemetry.addLine("Begin moveToPlatform");
+        if(side==PlayfieldSide.Blue){
 
-    }
-    public static void grabLego(){
+        }
+        if(side==PlayfieldSide.Red){
 
+        }
+        telemetry.addLine("End moveToPlatform");
     }
-    public static void moveToBuildingZone(DcMotor[] movementMotors,PlayfieldSide side){
 
+    /**
+     * Lowers the flappers in position to grab the platform
+     */
+    public  void lowerFlappers(Servo[]flapperMotors){
+        telemetry.addLine("Begin lowerFlappers");
+
+        telemetry.addLine("End lowerFlappers");
     }
-    public static void dropLego() {
 
+    /**
+     * Moves the robot to the platform depending on the side.
+     */
+    public void moveToSkybridge(DcMotor[] movementMotors,PlayfieldSide side) {
+        telemetry.addLine("Begin moveToSkybridge");
+
+        if(side==PlayfieldSide.Blue){
+
+        }
+        if(side==PlayfieldSide.Red){
+
+        }
+
+        telemetry.addLine("End moveToSkybridge");
+    }
+
+    /**
+     * Moves the platform to the building site.
+     */
+    public void movePlatformToBuildingSite(DcMotor[] movementMotors){
+        telemetry.addLine("Begin movePlatformToBuildingSite");
+
+        telemetry.addLine("End movePlatformToBuildingSite");
+    }
+
+    /**
+     * Moves the robot to the Legos.
+     */
+    public void moveToLegos(DcMotor[] movementMotors){
+        telemetry.addLine("Begin moveToLegos");
+
+        telemetry.addLine("End moveToLegos");
+    }
+
+    /**
+     * Attempts to locate the Skystone.
+     */
+    public  void locateSkystone(DcMotor[] movementMotors,PlayfieldSide side){
+        telemetry.addLine("Begin locateSkystone");
+
+        if(side==PlayfieldSide.Blue){
+
+        }
+        if(side==PlayfieldSide.Red){
+
+        }
+        telemetry.addLine("End locateSkystone");
+    }
+
+    /**
+     * Grabs the lego.
+     */
+    public void grabLego(){
+        telemetry.addLine("Begin grabLego");
+
+        telemetry.addLine("End grabLego");
+    }
+
+    /**
+     * moves the robot to the building zone.
+     */
+    public void moveToBuildingZone(DcMotor[] movementMotors,PlayfieldSide side){
+        telemetry.addLine("Begin moveToBuildingZone");
+
+        if(side==PlayfieldSide.Blue){
+
+        }
+        if(side==PlayfieldSide.Red){
+
+        }
+        telemetry.addLine("End moveToBuildingZone");
+    }
+
+    /**
+     * Drops the lego.
+     */
+    public void dropLego() {
+        telemetry.addLine("Begin dropLego");
+        telemetry.addLine("End dropLego");
     }
 }
