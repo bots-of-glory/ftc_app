@@ -27,9 +27,7 @@ public class SkystoneBase extends LinearOpMode {
     Servo rightServo2;
     GyroSensor sensorGyro;
     ModernRoboticsI2cGyro mrGyro;
-
-    DcMotor[] movementMotors;
-    Servo[] flapperMotors;
+    PlayfieldSide playSide;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -66,53 +64,53 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Moves the robot to the platform depending on the side.
      */
-    public void moveToPlatform(PlayfieldSide side) {
-        telemetry.addLine("Begin moveToPlatform " + side.toString());
+    public void moveToPlatform() {
+        telemetry.addLine("Begin moveToPlatform " + playSide.toString());
 
         int strafePosition = 0;
         int forwardPosition = 0;
         double power = 0.0;
 
-        if(side==PlayfieldSide.Red){
+        if(playSide==PlayfieldSide.Red){
             macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
             macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
         }
-        else if(side==PlayfieldSide.Blue){
+        else if(playSide==PlayfieldSide.Blue){
             macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
             macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
         }
 
         macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,forwardPosition,power,opModeIsActive(),telemetry);
 
-        telemetry.addLine("End moveToPlatform " + side.toString());
+        telemetry.addLine("End moveToPlatform " + playSide.toString());
     }
 
     /**
      * Lowers the flappers in position to grab the platform
      */
-    public  void lowerFlappers(PlayfieldSide side) {
-        telemetry.addLine("Begin lowerFlappers " + side.toString());
+    public  void lowerFlappers() {
+        telemetry.addLine("Begin lowerFlappers " + playSide.toString());
         double position = 0.0;
-        if(side==PlayfieldSide.Blue){
+        if(playSide==PlayfieldSide.Blue){
             AutonomousCommon.serverMovement(rightServo1, position);
             AutonomousCommon.serverMovement(rightServo2, position);
         }
-        if(side==PlayfieldSide.Red){
+        if(playSide==PlayfieldSide.Red){
             AutonomousCommon.serverMovement(leftServo1, position);
             AutonomousCommon.serverMovement(leftServo2, position);
         }
 
-        telemetry.addLine("End lowerFlappers " + side.toString());
+        telemetry.addLine("End lowerFlappers " + playSide.toString());
     }
 
     /**
      * Moves the robot to the platform depending on the side.
      */
-    public void moveToSkybridge(PlayfieldSide side) {
+    public void moveToSkybridge() {
         telemetry.addLine("Begin moveToSkybridge");
-        if(side==PlayfieldSide.Blue){
+        if(playSide==PlayfieldSide.Blue){
         }
-        if(side==PlayfieldSide.Red){
+        if(playSide==PlayfieldSide.Red){
         }
         telemetry.addLine("End moveToSkybridge");
     }
@@ -138,11 +136,11 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Attempts to locate the Skystone.
      */
-    public  void locateSkystone(PlayfieldSide side){
+    public  void locateSkystone(){
         telemetry.addLine("Begin locateSkystone");
-        if(side==PlayfieldSide.Blue){
+        if(playSide==PlayfieldSide.Blue){
         }
-        if(side==PlayfieldSide.Red){
+        if(playSide==PlayfieldSide.Red){
         }
         telemetry.addLine("End locateSkystone");
     }
@@ -159,11 +157,11 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * moves the robot to the building zone.
      */
-    public void moveToBuildingZone(PlayfieldSide side){
+    public void moveToBuildingZone(){
         telemetry.addLine("Begin moveToBuildingZone");
-        if(side==PlayfieldSide.Blue){
+        if(playSide==PlayfieldSide.Blue){
         }
-        if(side==PlayfieldSide.Red){
+        if(playSide==PlayfieldSide.Red){
         }
         telemetry.addLine("End moveToBuildingZone");
     }

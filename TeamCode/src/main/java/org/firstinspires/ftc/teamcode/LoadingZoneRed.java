@@ -10,17 +10,18 @@ public class LoadingZoneRed extends SkystoneBase {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        playSide = PlayfieldSide.Red;
         initMotors();
 
         moveToLegos();
-        locateSkystone(PlayfieldSide.Red);
+        locateSkystone();
         grabLego();
-        moveToBuildingZone(PlayfieldSide.Red);
+        moveToBuildingZone();
         dropLego();
 
         moveToLegos();
-        locateSkystone(PlayfieldSide.Red);
+        locateSkystone();
         grabLego();
-        moveToBuildingZone(PlayfieldSide.Red);
+        moveToBuildingZone();
     }
 }
