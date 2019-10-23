@@ -21,8 +21,10 @@ public class SkystoneBase extends LinearOpMode {
     DcMotor rearLeft;
     DcMotor frontRight;
     DcMotor rearRight;
-    Servo leftArmServo;
-    Servo rightArmServo;
+    Servo leftServo1;
+    Servo leftServo2;
+    Servo rightServo1;
+    Servo rightServo2;
     GyroSensor sensorGyro;
     ModernRoboticsI2cGyro mrGyro;
 
@@ -40,8 +42,11 @@ public class SkystoneBase extends LinearOpMode {
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
         sensorGyro = hardwareMap.gyroSensor.get("gyro");
-        leftArmServo = hardwareMap.servo.get("leftArmServo");
-        rightArmServo = hardwareMap.servo.get("rightArmServo");
+        leftServo1 = hardwareMap.servo.get("leftServo1");
+        leftServo2 = hardwareMap.servo.get("leftServo2");
+        rightServo1 = hardwareMap.servo.get("rightServo1");
+        rightServo2 = hardwareMap.servo.get("rightServo2");
+
 
         //declare motor directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
@@ -49,20 +54,13 @@ public class SkystoneBase extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
-        leftArmServo.setDirection(Servo.Direction.FORWARD);
-        rightArmServo.setDirection(Servo.Direction.FORWARD);
+        leftServo1.setDirection(Servo.Direction.FORWARD);
+        leftServo2.setDirection(Servo.Direction.FORWARD);
+        rightServo1.setDirection(Servo.Direction.FORWARD);
+        rightServo2.setDirection(Servo.Direction.FORWARD);
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
-        movementMotors = new DcMotor[4];
-        movementMotors[MovementMotors.FrontLeft.getValue()] = frontLeft;
-        movementMotors[MovementMotors.FrontRight.getValue()] = frontRight;
-        movementMotors[MovementMotors.RearRight.getValue()] = rearRight;
-        movementMotors[MovementMotors.RearLeft.getValue()] = rearLeft;
-
-        flapperMotors = new Servo[2];
-        flapperMotors[FlapperServos.Left.getValue()] = leftArmServo;
-        flapperMotors[FlapperServos.Right.getValue()] = rightArmServo;
     }
 
     /**
@@ -92,10 +90,19 @@ public class SkystoneBase extends LinearOpMode {
     /**
      * Lowers the flappers in position to grab the platform
      */
-    public  void lowerFlappers(){
-        telemetry.addLine("Begin lowerFlappers");
+    public  void lowerFlappers(PlayfieldSide side) {
+        telemetry.addLine("Begin lowerFlappers " + side.toString());
+        double position = 0.0;
+        if(side==PlayfieldSide.Blue){
+            AutonomousCommon.serverMovement(rightServo1, position);
+            AutonomousCommon.serverMovement(rightServo2, position);
+        }
+        if(side==PlayfieldSide.Red){
+            AutonomousCommon.serverMovement(leftServo1, position);
+            AutonomousCommon.serverMovement(leftServo2, position);
+        }
 
-        telemetry.addLine("End lowerFlappers");
+        telemetry.addLine("End lowerFlappers " + side.toString());
     }
 
     /**

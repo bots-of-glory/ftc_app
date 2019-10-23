@@ -74,6 +74,7 @@ public class AutonomousCommon  {
                 break;
         }
 
+
         rearLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rearRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -100,7 +101,9 @@ public class AutonomousCommon  {
         telemetry.addLine("End macanumMovement");
         telemetry.update();
     }
-
+            public static void serverMovement (Servo servo, double position) {
+                servo.setPosition(position);
+            }
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
