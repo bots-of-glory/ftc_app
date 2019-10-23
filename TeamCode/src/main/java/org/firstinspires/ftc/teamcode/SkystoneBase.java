@@ -70,14 +70,22 @@ public class SkystoneBase extends LinearOpMode {
      */
     public void moveToPlatform(PlayfieldSide side) {
         telemetry.addLine("Begin moveToPlatform " + side.toString());
-        int targetPosition = 0;
-        this.opModeIsActive();
+
+        int strafePosition = 0;
+        int forwardPosition = 0;
         double power = 0.0;
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,targetPosition,power,opModeIsActive(),telemetry);
-        if(side==PlayfieldSide.Blue){
-        }
+
         if(side==PlayfieldSide.Red){
+            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
+            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
         }
+        else if(side==PlayfieldSide.Blue){
+            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
+            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
+        }
+
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,forwardPosition,power,opModeIsActive(),telemetry);
+
         telemetry.addLine("End moveToPlatform " + side.toString());
     }
 
