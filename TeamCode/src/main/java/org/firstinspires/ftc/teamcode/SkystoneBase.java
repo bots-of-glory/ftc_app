@@ -68,20 +68,16 @@ public class SkystoneBase extends LinearOpMode {
         telemetry.addLine("Begin moveToPlatform " + playSide.toString());
 
         int strafePosition = 0;
-        int forwardPosition = 0;
+        int backupPosition = 0;
         double power = 0.0;
 
         if(playSide==PlayfieldSide.Red){
             macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
-            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
         }
         else if(playSide==PlayfieldSide.Blue){
             macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
-            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
         }
-
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,forwardPosition,power,opModeIsActive(),telemetry);
-
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,backupPosition,power,opModeIsActive(),telemetry);
         telemetry.addLine("End moveToPlatform " + playSide.toString());
     }
 
@@ -99,7 +95,6 @@ public class SkystoneBase extends LinearOpMode {
             AutonomousCommon.serverMovement(leftServo1, position);
             AutonomousCommon.serverMovement(leftServo2, position);
         }
-
         telemetry.addLine("End lowerFlappers " + playSide.toString());
     }
 
@@ -108,10 +103,9 @@ public class SkystoneBase extends LinearOpMode {
      */
     public void moveToSkybridge() {
         telemetry.addLine("Begin moveToSkybridge");
-        if(playSide==PlayfieldSide.Blue){
-        }
-        if(playSide==PlayfieldSide.Red){
-        }
+        int forwardPosition = 0;
+        double power = 0.0;
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,forwardPosition,power,opModeIsActive(),telemetry);
         telemetry.addLine("End moveToSkybridge");
     }
 
@@ -120,7 +114,14 @@ public class SkystoneBase extends LinearOpMode {
      */
     public void movePlatformToBuildingSite(){
         telemetry.addLine("Begin movePlatformToBuildingSite");
-
+        int strafePosition = 0;
+        double power = 0.0;
+        if(playSide==PlayfieldSide.Red){
+            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
+        }
+        else if(playSide==PlayfieldSide.Blue){
+            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
+        }
         telemetry.addLine("End movePlatformToBuildingSite");
     }
 
