@@ -21,14 +21,14 @@ public class DriverControl extends LinearOpMode
     private DcMotor rearLeft;       //2     Hub1 P2
     private DcMotor frontRight;     //3     Hub1 P1
     private DcMotor rearRight;      //4     Hub1 P3
-    private DcMotor liftMotor;      //5     Hub2 P0
-    private DcMotor flipperMotor;       //6     Hub2 P1
-    private DcMotor pulleyMotor;    //7     Hub2 P3
-    private DcMotor revLift;        //8     Hub2 P2
+    //private DcMotor liftMotor;      //5     Hub2 P0
+    //private DcMotor flipperMotor;       //6     Hub2 P1
+    //private DcMotor pulleyMotor;    //7     Hub2 P3
+    //private DcMotor revLift;        //8     Hub2 P2
 
     //Servos
-    private Servo armServo;
-    private Servo depositServo;     //2     Hub2 P?
+   // private Servo armServo;
+    //private Servo depositServo;     //2     Hub2 P?
 
 
     @Override
@@ -40,25 +40,25 @@ public class DriverControl extends LinearOpMode
         rearLeft = hardwareMap.dcMotor.get("rearLeft");
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
-        liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        flipperMotor = hardwareMap.dcMotor.get("flipperMotor");
-        pulleyMotor = hardwareMap.dcMotor.get("pulleyMotor");
-        revLift = hardwareMap.dcMotor.get("revLift");
+      //liftMotor = hardwareMap.dcMotor.get("liftMotor");
+       //flipperMotor = hardwareMap.dcMotor.get("flipperMotor");
+       //pulleyMotor = hardwareMap.dcMotor.get("pulleyMotor");
+       //revLift = hardwareMap.dcMotor.get("revLift");
 //Declare Servos
-        armServo = hardwareMap.servo.get("armServo");
-        depositServo = hardwareMap.servo.get("depositServo");
+      //armServo = hardwareMap.servo.get("armServo");
+     //depositServo = hardwareMap.servo.get("depositServo");
 //Declare DcMotor Directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.FORWARD);
         rearLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
-        liftMotor.setDirection(DcMotor.Direction.REVERSE);
-        flipperMotor.setDirection(DcMotor.Direction.FORWARD);
-        pulleyMotor.setDirection(DcMotor.Direction.FORWARD);
-        revLift.setDirection(DcMotor.Direction.FORWARD);
+        //liftMotor.setDirection(DcMotor.Direction.REVERSE);
+        //flipperMotor.setDirection(DcMotor.Direction.FORWARD);
+        //pulleyMotor.setDirection(DcMotor.Direction.FORWARD);
+        //revLift.setDirection(DcMotor.Direction.FORWARD);
 //Declare Servo Directions
-        armServo.setDirection(Servo.Direction.FORWARD);
-        depositServo.setDirection(Servo.Direction.FORWARD);
+        //armServo.setDirection(Servo.Direction.FORWARD);
+        //depositServo.setDirection(Servo.Direction.FORWARD);
 
 
 //Declare Mecanum Drive Variables
@@ -153,7 +153,7 @@ public class DriverControl extends LinearOpMode
 //-----------------------------------Gamepad 2 Start------------------------------------------------
 
 //Flipper Servo
-                if(gamepad2.x)
+                /*if(gamepad2.x)
                 {
                     flipperMotor.setPower(1);
                 }
@@ -164,7 +164,7 @@ public class DriverControl extends LinearOpMode
                 else
                 {
                     flipperMotor.setPower(0);
-                }
+                }*/
 
 
 
@@ -200,7 +200,7 @@ public class DriverControl extends LinearOpMode
 
 
 //Deposit Servo
-                if(gamepad2.right_bumper)
+               /* if(gamepad2.right_bumper)
                 {
                     depositServo.setPosition(180);
                 }
@@ -212,9 +212,9 @@ public class DriverControl extends LinearOpMode
                 else
                 {
 
-                }
+                }*/
 //Cascade Lift
-                if(gamepad2.dpad_up)
+                /*if(gamepad2.dpad_up)
                 {
                     liftMotor.setPower(1);
                 }
@@ -225,11 +225,11 @@ public class DriverControl extends LinearOpMode
                 else
                 {
                     liftMotor.setPower(0);
-                }
+                }*/
 //Pulley Motor
-                pulleyMotor.setPower(gamepad2.right_stick_y);
+                //pulleyMotor.setPower(gamepad2.right_stick_y);
 //Rev Lift
-                revLift.setPower(gamepad2.left_stick_x);
+             //   revLift.setPower(gamepad2.left_stick_x);
 //------------------------------------Gamepad 2 End-------------------------------------------------
                 idle();
             }
