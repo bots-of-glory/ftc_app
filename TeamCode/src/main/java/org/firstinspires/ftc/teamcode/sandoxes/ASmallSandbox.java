@@ -18,16 +18,16 @@ import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
 @Autonomous (name="ASmallSandbox", group="Competition Autonomous")
 public class ASmallSandbox extends LinearOpMode {
-    MasterVision vision;
-    SampleRandomizedPositions goldPosition;
+    //MasterVision vision;
+    //SampleRandomizedPositions goldPosition;
     DcMotor liftMotor;
     DcMotor frontLeft;
     DcMotor rearLeft;
     DcMotor frontRight;
     DcMotor rearRight;
-    Servo armServo;
-    GyroSensor sensorGyro;
-    ModernRoboticsI2cGyro mrGyro;
+   // Servo armServo;
+   // GyroSensor sensorGyro;
+   // ModernRoboticsI2cGyro mrGyro;
 
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -41,8 +41,8 @@ public class ASmallSandbox extends LinearOpMode {
         rearLeft = hardwareMap.dcMotor.get("rearLeft");
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
-        sensorGyro = hardwareMap.gyroSensor.get("gyro");
-        armServo = hardwareMap.servo.get("armServo");
+       // sensorGyro = hardwareMap.gyroSensor.get("gyro");
+       // armServo = hardwareMap.servo.get("armServo");
 
         //declare motor directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
@@ -50,9 +50,9 @@ public class ASmallSandbox extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
-        armServo.setDirection(Servo.Direction.FORWARD);
+       // armServo.setDirection(Servo.Direction.FORWARD);
 
-        mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
+       // mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
 
         double turnSpeed = 0.2;
