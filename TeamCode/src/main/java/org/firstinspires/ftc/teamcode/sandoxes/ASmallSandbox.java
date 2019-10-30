@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 public class ASmallSandbox extends LinearOpMode {
     //MasterVision vision;
     //SampleRandomizedPositions goldPosition;
-    DcMotor liftMotor;
+    //DcMotor liftMotor;
     DcMotor frontLeft;
     DcMotor rearLeft;
     DcMotor frontRight;
@@ -36,7 +36,7 @@ public class ASmallSandbox extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         //declare motors
-        liftMotor = hardwareMap.dcMotor.get("liftMotor");
+       // liftMotor = hardwareMap.dcMotor.get("liftMotor");
         frontLeft = hardwareMap.dcMotor.get("frontLeft");
         rearLeft = hardwareMap.dcMotor.get("rearLeft");
         frontRight = hardwareMap.dcMotor.get("frontRight");
@@ -49,7 +49,7 @@ public class ASmallSandbox extends LinearOpMode {
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
-        liftMotor.setDirection(DcMotor.Direction.REVERSE);
+      //  liftMotor.setDirection(DcMotor.Direction.REVERSE);
        // armServo.setDirection(Servo.Direction.FORWARD);
 
        // mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
