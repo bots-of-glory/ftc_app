@@ -13,6 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.vuforia.Vuforia;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.teamcode.AutonomousCommon;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
@@ -66,7 +67,7 @@ public class ASmallSandbox extends LinearOpMode {
         frontRight.setPower(1);
         rearRight.setPower(1);
         Thread.sleep(2000);
-        //strafe
+        AutonomousCommon.macanumBox(frontLeft,rearLeft,frontRight,rearRight,1000,.3,true, telemetry);        //strafe
         //AutonomousCommon.strafeLeft(frontLeft,rearLeft,frontRight,rearRight,2000);
         //AutonomousCommon.macanumStrafeRight(frontLeft,rearLeft,frontRight,rearRight,2600,true, telemetry);
         //frontLeft.setPower(-1);

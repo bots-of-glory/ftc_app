@@ -21,10 +21,8 @@ public class SkystoneBase extends LinearOpMode {
     DcMotor rearLeft;
     DcMotor frontRight;
     DcMotor rearRight;
-    Servo leftServo1;
-    Servo leftServo2;
-    Servo rightServo1;
-    Servo rightServo2;
+    Servo leftServo;
+    Servo rightServo;
     GyroSensor sensorGyro;
     ModernRoboticsI2cGyro mrGyro;
     PlayfieldSide playSide;
@@ -40,11 +38,8 @@ public class SkystoneBase extends LinearOpMode {
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
         sensorGyro = hardwareMap.gyroSensor.get("gyro");
-        leftServo1 = hardwareMap.servo.get("leftServo1");
-        leftServo2 = hardwareMap.servo.get("leftServo2");
-        rightServo1 = hardwareMap.servo.get("rightServo1");
-        rightServo2 = hardwareMap.servo.get("rightServo2");
-
+        leftServo = hardwareMap.servo.get("leftServo");
+        rightServo = hardwareMap.servo.get("rightServo");
 
         //declare motor directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
@@ -52,10 +47,8 @@ public class SkystoneBase extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
         liftMotor.setDirection(DcMotor.Direction.REVERSE);
-        leftServo1.setDirection(Servo.Direction.FORWARD);
-        leftServo2.setDirection(Servo.Direction.FORWARD);
-        rightServo1.setDirection(Servo.Direction.FORWARD);
-        rightServo2.setDirection(Servo.Direction.FORWARD);
+        leftServo.setDirection(Servo.Direction.FORWARD);
+        rightServo.setDirection(Servo.Direction.FORWARD);
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
 
@@ -87,14 +80,8 @@ public class SkystoneBase extends LinearOpMode {
     public  void lowerFlappers() {
         telemetry.addLine("Begin lowerFlappers " + playSide.toString());
         double position = 0.0;
-        if(playSide==PlayfieldSide.Blue){
-            AutonomousCommon.serverMovement(rightServo1, position);
-            AutonomousCommon.serverMovement(rightServo2, position);
-        }
-        if(playSide==PlayfieldSide.Red){
-            AutonomousCommon.serverMovement(leftServo1, position);
-            AutonomousCommon.serverMovement(leftServo2, position);
-        }
+        AutonomousCommon.serverMovement(leftServo, position);
+        AutonomousCommon.serverMovement(rightServo, position);
         telemetry.addLine("End lowerFlappers " + playSide.toString());
     }
 

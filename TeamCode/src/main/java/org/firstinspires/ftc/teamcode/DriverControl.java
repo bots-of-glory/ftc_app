@@ -21,6 +21,8 @@ public class DriverControl extends LinearOpMode
     private DcMotor rearLeft;       //2     Hub1 P2
     private DcMotor frontRight;     //3     Hub1 P1
     private DcMotor rearRight;      //4     Hub1 P3
+    // private Servo leftServo;
+    // private Servo rightServo;
     //private DcMotor liftMotor;      //5     Hub2 P0
     //private DcMotor flipperMotor;       //6     Hub2 P1
     //private DcMotor pulleyMotor;    //7     Hub2 P3
