@@ -114,20 +114,19 @@ public class AutonomousCommon {
         }
     }
 
-    public static int convertInchesToPosition(double inches, StrafeDirection direction) {
+    public static int convertInchesToPosition(double inches, boolean isStrafe) {
         int returnValue = 0;
-        switch (direction) {
-            case Left:
-            case Right:
-                //Strafing movement conversion here
-                returnValue = (int) Math.round(inches * 1);
-                break;
-            case Forward:
-            case Backward:
-                //Normal movement conversion here
-                returnValue = (int) Math.round(inches * 2);
-                break;
+
+        if(isStrafe){
+            //strafe factor
+            returnValue = (int) Math.round(inches * (1000/9));
         }
+        else
+        {
+            //non strafe factor
+            returnValue = (int) Math.round(inches * (1000/10));
+        }
+
         return returnValue;
     }
 

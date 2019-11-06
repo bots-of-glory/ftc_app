@@ -60,17 +60,10 @@ public class SkystoneBase extends LinearOpMode {
     public void moveToPlatform() {
         telemetry.addLine("Begin moveToPlatform " + playSide.toString());
 
-        int strafePosition = 0;
-        int backupPosition = 0;
-        double power = 0.0;
+        int backupPosition = AutonomousCommon.convertInchesToPosition(1,false);
+        double power = 1.0;
 
-        if(playSide==PlayfieldSide.Red){
-            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,strafePosition,power,opModeIsActive(),telemetry);
-        }
-        else if(playSide==PlayfieldSide.Blue){
-            macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,strafePosition,power,opModeIsActive(),telemetry);
-        }
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,backupPosition,power,opModeIsActive(),telemetry);
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Backward,backupPosition,power,opModeIsActive(),telemetry);
         telemetry.addLine("End moveToPlatform " + playSide.toString());
     }
 
@@ -79,7 +72,7 @@ public class SkystoneBase extends LinearOpMode {
      */
     public  void lowerFlappers() {
         telemetry.addLine("Begin lowerFlappers " + playSide.toString());
-        double position = 0.0;
+        double position = 1;
         AutonomousCommon.serverMovement(leftServo, position);
         AutonomousCommon.serverMovement(rightServo, position);
         telemetry.addLine("End lowerFlappers " + playSide.toString());
