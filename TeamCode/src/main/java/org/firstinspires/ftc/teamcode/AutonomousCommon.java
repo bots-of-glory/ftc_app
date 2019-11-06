@@ -10,26 +10,25 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.List;
 
-public class AutonomousCommon  {
-
+public class AutonomousCommon {
 
 
     public static void macanumBox(DcMotor frontLeft, DcMotor rearLeft,
                                   DcMotor frontRight, DcMotor rearRight,
-                                  int targetPosition,double power, boolean opModeIsActive,
+                                  int targetPosition, double power, boolean opModeIsActive,
                                   Telemetry telemetry) {
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Forward,targetPosition,power,opModeIsActive, telemetry);
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Right,targetPosition,power,opModeIsActive, telemetry);
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight, AutonomousCommon.StrafeDirection.Backward,targetPosition,power,opModeIsActive, telemetry);
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,AutonomousCommon.StrafeDirection.Left,targetPosition,power,opModeIsActive, telemetry);
+        macanumMovement(frontLeft, rearLeft, frontRight, rearRight, AutonomousCommon.StrafeDirection.Forward, targetPosition, power, opModeIsActive, telemetry);
+        macanumMovement(frontLeft, rearLeft, frontRight, rearRight, AutonomousCommon.StrafeDirection.Right, targetPosition, power, opModeIsActive, telemetry);
+        macanumMovement(frontLeft, rearLeft, frontRight, rearRight, AutonomousCommon.StrafeDirection.Backward, targetPosition, power, opModeIsActive, telemetry);
+        macanumMovement(frontLeft, rearLeft, frontRight, rearRight, AutonomousCommon.StrafeDirection.Left, targetPosition, power, opModeIsActive, telemetry);
 
     }
 
     public static void macanumMovement(DcMotor frontLeft, DcMotor rearLeft,
-                                   DcMotor frontRight, DcMotor rearRight,
-                                   StrafeDirection strafeDirection,
-                                   int targetPosition,double power, boolean opModeIsActive,
-                                   Telemetry telemetry) {
+                                       DcMotor frontRight, DcMotor rearRight,
+                                       StrafeDirection strafeDirection,
+                                       int targetPosition, double power, boolean opModeIsActive,
+                                       Telemetry telemetry) {
 
         telemetry.addLine("Begin macanumMovement");
         telemetry.update();
@@ -39,7 +38,7 @@ public class AutonomousCommon  {
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
-        switch  (strafeDirection){
+        switch (strafeDirection) {
             case Left:
                 telemetry.addLine("strafing left");
                 telemetry.update();
@@ -101,9 +100,11 @@ public class AutonomousCommon  {
         telemetry.addLine("End macanumMovement");
         telemetry.update();
     }
-            public static void serverMovement (Servo servo, double position) {
-                servo.setPosition(position);
-            }
+
+    public static void serverMovement(Servo servo, double position) {
+        servo.setPosition(position);
+    }
+
     //sleep from LinearOpMode class
     public static void sleep(long milliseconds) {
         try {
@@ -112,6 +113,25 @@ public class AutonomousCommon  {
             Thread.currentThread().interrupt();
         }
     }
+
+    public static int convertInchesToPosition(double inches, StrafeDirection direction) {
+        int returnValue = 0;
+        switch (direction) {
+            case Left:
+            case Right:
+                //Strafing movement conversion here
+                returnValue = (int) Math.round(inches * 1);
+                break;
+            case Forward:
+            case Backward:
+                //Normal movement conversion here
+                returnValue = (int) Math.round(inches * 2);
+                break;
+        }
+        return returnValue;
+    }
+
+
     public enum StrafeDirection{
         Left,
         Right,
