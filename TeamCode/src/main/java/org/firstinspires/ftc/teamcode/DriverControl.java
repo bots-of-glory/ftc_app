@@ -21,6 +21,8 @@ public class DriverControl extends LinearOpMode
     private DcMotor rearLeft;       //2     Hub1 P2
     private DcMotor frontRight;     //3     Hub1 P1
     private DcMotor rearRight;      //4     Hub1 P3
+    private Servo leftServo;
+    private Servo rightServo;
     // private Servo leftServo;
     // private Servo rightServo;
     //private DcMotor liftMotor;      //5     Hub2 P0
@@ -47,8 +49,8 @@ public class DriverControl extends LinearOpMode
        //pulleyMotor = hardwareMap.dcMotor.get("pulleyMotor");
        //revLift = hardwareMap.dcMotor.get("revLift");
 //Declare Servos
-      //armServo = hardwareMap.servo.get("armServo");
-     //depositServo = hardwareMap.servo.get("depositServo");
+      leftServo = hardwareMap.servo.get("leftServo");
+      rightServo = hardwareMap.servo.get("rightServo");
 //Declare DcMotor Directions
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.FORWARD);
@@ -59,8 +61,8 @@ public class DriverControl extends LinearOpMode
         //pulleyMotor.setDirection(DcMotor.Direction.FORWARD);
         //revLift.setDirection(DcMotor.Direction.FORWARD);
 //Declare Servo Directions
-        //armServo.setDirection(Servo.Direction.FORWARD);
-        //depositServo.setDirection(Servo.Direction.FORWARD);
+        leftServo.setDirection(Servo.Direction.FORWARD);
+        rightServo.setDirection(Servo.Direction.FORWARD);
 
 
 //Declare Mecanum Drive Variables
@@ -142,98 +144,23 @@ public class DriverControl extends LinearOpMode
                     frontRight.setPower(limit(front_right)* slow);
                     rearRight.setPower(limit(rear_right)* slow);
                 }
-
-//if(gamepad1.dpad_up) {
-//    armServo.setPosition(0);
-//}
-//else if(gamepad1.dpad_down) {
-//    armServo.setPosition(0.7);
-//}
+}
 //------------------------------------Gamepad 1 End-------------------------------------------------
+// ---------------------        ---------------Gamepad 2 Start-------------------------------------------------
 
-
-//-----------------------------------Gamepad 2 Start------------------------------------------------
-
-//Flipper Servo
-                /*if(gamepad2.x)
-                {
-                    flipperMotor.setPower(1);
-                }
-                else if(gamepad2.b)
-                {
-                    flipperMotor.setPower(-1);
-                }
-                else
-                {
-                    flipperMotor.setPower(0);
-                }*/
-
-
-
-//                if(gamepad2.x && !buttonState)
-//                {
-//                    if(flipperState == 1)
-//                    {
-//                        flipperState = 0;
-//                    }
-//                    else
-//                    {
-//                        flipperState = 1;
-//                    }
-//                    buttonState = true;
-//                }
-//                else if(!gamepad2.x && buttonState)
-//                {
-//                    buttonState = false;
-//                }
-//
-//                if(flipperState == 1)
-//                {
-//                    flipperServo.setPosition(1);
-//                }
-//                else
-//                {
-//                    flipperServo.setPosition(0.5);
-//                }
-//Telemetry
-//                telemetry.addData("buttonState",buttonState);
-//                telemetry.addData("flipperState",flipperState);
-//                telemetry.update();
-
-
-//Deposit Servo
-               /* if(gamepad2.right_bumper)
-                {
-                    depositServo.setPosition(180);
-                }
-                //Forward
-                else if(gamepad2.left_bumper)
-                {
-                    depositServo.setPosition(0);
-                }
-                else
-                {
-
-                }*/
-//Cascade Lift
-                /*if(gamepad2.dpad_up)
-                {
-                    liftMotor.setPower(1);
-                }
-                else if(gamepad2.dpad_down)
-                {
-                    liftMotor.setPower(-1);
-                }
-                else
-                {
-                    liftMotor.setPower(0);
-                }*/
-//Pulley Motor
-                //pulleyMotor.setPower(gamepad2.right_stick_y);
-//Rev Lift
-             //   revLift.setPower(gamepad2.left_stick_x);
+//Flipper up
+            if(gamepad2.dpad_up) {
+                leftServo.setPosition(0);
+                rightServo.setPosition(0);
+//Flipper down
+            }
+            if(gamepad2.dpad_down) {
+                leftServo.setPosition(1.0);
+                rightServo.setPosition(1.0);
 //------------------------------------Gamepad 2 End-------------------------------------------------
-                idle();
+
+
+            idle();
             }
         }
     }

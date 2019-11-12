@@ -12,13 +12,11 @@ public class LoadingZoneBlue extends SkystoneBase {
     public void runOpMode() throws InterruptedException {
         this.playSide = PlayfieldSide.Blue;
         initMotors();
-
         moveToLegos();
         locateSkystone();
         grabLego();
         moveToBuildingZone();
         dropLego();
-
         moveToLegos();
         locateSkystone();
         grabLego();
