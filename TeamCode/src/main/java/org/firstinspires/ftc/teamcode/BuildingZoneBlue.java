@@ -14,10 +14,12 @@ public class BuildingZoneBlue extends  SkystoneBase {
     public void runOpMode() throws InterruptedException {
         this.playSide = PlayfieldSide.Blue;
         initMotors();
-        moveToPlatform();
-        lowerFlappers();
-        movePlatformToBuildingSite();
-        moveToSkybridge();
-
+        waitForStart();
+        while(opModeIsActive()) {
+            moveToPlatform();
+            lowerFlappers();
+            movePlatformToBuildingSite();
+            moveToSkybridge();
+        }
     }
 }

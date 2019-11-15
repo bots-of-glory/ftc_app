@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.AutonomousCommon.FlapperServos;
 import org.firstinspires.ftc.teamcode.AutonomousCommon.MovementMotors;
 import org.firstinspires.ftc.teamcode.AutonomousCommon.PlayfieldSide;
@@ -14,8 +16,7 @@ import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 import static org.firstinspires.ftc.teamcode.AutonomousCommon.*;
 
 public class SkystoneBase extends LinearOpMode {
-    MasterVision vision;
-    SampleRandomizedPositions goldPosition;
+
     DcMotor liftMotor;
     DcMotor frontLeft;
     DcMotor rearLeft;
@@ -31,7 +32,7 @@ public class SkystoneBase extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
     }
     public void initMotors(){
-        //declare motors
+        telemetry.addLine("Begin initMotors " + playSide.toString());
         liftMotor = hardwareMap.dcMotor.get("liftMotor");
         frontLeft = hardwareMap.dcMotor.get("frontLeft");
         rearLeft = hardwareMap.dcMotor.get("rearLeft");
@@ -51,7 +52,7 @@ public class SkystoneBase extends LinearOpMode {
         rightServo.setDirection(Servo.Direction.FORWARD);
 
         mrGyro = (ModernRoboticsI2cGyro) sensorGyro;
-
+        telemetry.addLine("End moveToPlatform " + playSide.toString());
     }
 
     /**
@@ -112,18 +113,6 @@ public class SkystoneBase extends LinearOpMode {
         telemetry.addLine("Begin moveToLegos");
 
         telemetry.addLine("End moveToLegos");
-    }
-
-    /**
-     * Attempts to locate the Skystone.
-     */
-    public  void locateSkystone(){
-        telemetry.addLine("Begin locateSkystone");
-        if(playSide==PlayfieldSide.Blue){
-        }
-        if(playSide==PlayfieldSide.Red){
-        }
-        telemetry.addLine("End locateSkystone");
     }
 
     /**
