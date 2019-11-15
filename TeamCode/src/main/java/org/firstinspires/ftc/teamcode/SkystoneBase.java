@@ -104,8 +104,8 @@ public class SkystoneBase extends LinearOpMode {
         double power = 1.0;
 
         macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,towToWall,power,opModeIsActive(),telemetry);
-        AutonomousCommon.servoMovement(leftServo, 0);
-        AutonomousCommon.servoMovement(rightServo, 0);
+        AutonomousCommon.servoMovement(leftServo, 90);
+        AutonomousCommon.servoMovement(rightServo, -90);
         sleep(2000); //wait
         telemetry.addLine("End movePlatformToBuildingSite");
     }
