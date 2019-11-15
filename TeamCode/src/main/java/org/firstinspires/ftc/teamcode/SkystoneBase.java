@@ -76,9 +76,9 @@ public class SkystoneBase extends LinearOpMode {
     public  void lowerFlappers() {
         telemetry.addLine("Begin lowerFlappers " + playSide.toString());
 
-        AutonomousCommon.servoMovement(leftServo, 180);
-        AutonomousCommon.servoMovement(rightServo, -180);
-
+        AutonomousCommon.servoMovement(leftServo, -90);
+        AutonomousCommon.servoMovement(rightServo, 90);
+        sleep(2000); //wait
         telemetry.addLine("End lowerFlappers " + playSide.toString());
     }
 
@@ -106,6 +106,7 @@ public class SkystoneBase extends LinearOpMode {
         macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,towToWall,power,opModeIsActive(),telemetry);
         AutonomousCommon.servoMovement(leftServo, 0);
         AutonomousCommon.servoMovement(rightServo, 0);
+        sleep(2000); //wait
         telemetry.addLine("End movePlatformToBuildingSite");
     }
 
