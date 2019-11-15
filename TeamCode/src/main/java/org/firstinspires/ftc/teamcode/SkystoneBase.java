@@ -75,14 +75,10 @@ public class SkystoneBase extends LinearOpMode {
      */
     public  void lowerFlappers() {
         telemetry.addLine("Begin lowerFlappers " + playSide.toString());
-        double power = 1.0;
-        double position = 1.0;
-        int towToWall = AutonomousCommon.convertInchesToPosition(34.0,false);
-        AutonomousCommon.serverMovement(leftServo, position);
-        AutonomousCommon.serverMovement(rightServo, position);
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,towToWall,power,opModeIsActive(),telemetry);
-        AutonomousCommon.serverMovement(leftServo, 0.0);
-        AutonomousCommon.serverMovement(rightServo, 0.0);
+
+        AutonomousCommon.servoMovement(leftServo, 180);
+        AutonomousCommon.servoMovement(rightServo, -180);
+
         telemetry.addLine("End lowerFlappers " + playSide.toString());
     }
 
@@ -104,11 +100,12 @@ public class SkystoneBase extends LinearOpMode {
      */
     public void movePlatformToBuildingSite(){
         telemetry.addLine("Begin movePlatformToBuildingSite");
-        int strafeToWall = convertInchesToPosition(32.0, false);
+        int towToWall = AutonomousCommon.convertInchesToPosition(34.0,false);
         double power = 1.0;
 
-        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,strafeToWall,power,opModeIsActive(),telemetry);
-
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,towToWall,power,opModeIsActive(),telemetry);
+        AutonomousCommon.servoMovement(leftServo, 0);
+        AutonomousCommon.servoMovement(rightServo, 0);
         telemetry.addLine("End movePlatformToBuildingSite");
     }
 

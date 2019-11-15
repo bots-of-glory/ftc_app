@@ -101,7 +101,7 @@ public class AutonomousCommon {
         telemetry.update();
     }
 
-    public static void serverMovement(Servo servo, double position) {
+    public static void servoMovement(Servo servo, double position) {
         servo.setPosition(position);
     }
 
