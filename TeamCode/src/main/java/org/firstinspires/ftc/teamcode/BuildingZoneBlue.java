@@ -15,11 +15,10 @@ public class BuildingZoneBlue extends  SkystoneBase {
         this.playSide = PlayfieldSide.Blue;
         initMotors();
         waitForStart();
-        while(opModeIsActive()) {
             moveToPlatform();
             lowerFlappers();
             movePlatformToBuildingSite();
             moveToSkybridge();
-        }
+
     }
 }

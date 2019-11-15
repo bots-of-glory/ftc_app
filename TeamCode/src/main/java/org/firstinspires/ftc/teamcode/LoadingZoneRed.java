@@ -15,7 +15,6 @@ public class LoadingZoneRed extends SkystoneVisionBase {
         playSide = PlayfieldSide.Red;
         initMotors();
         waitForStart();
-        while(opModeIsActive()) {
             //First Skystone
             moveToLegos();
             locateSkystone();
@@ -29,6 +28,6 @@ public class LoadingZoneRed extends SkystoneVisionBase {
             grabLego();
             moveToBuildingZone();
             dropLego();
-        }
+
     }
 }

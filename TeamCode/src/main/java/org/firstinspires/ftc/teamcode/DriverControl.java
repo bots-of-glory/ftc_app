@@ -7,9 +7,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.Device;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.Servo;
-
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "DriverControl" , group = "testOp")
 //@Disabled
@@ -36,9 +36,7 @@ public class DriverControl extends LinearOpMode
 
 
     @Override
-    public void runOpMode () throws InterruptedException
-
-    {
+    public void runOpMode () throws InterruptedException {
 //Declare DcMotors
         frontLeft = hardwareMap.dcMotor.get("frontLeft");
         rearLeft = hardwareMap.dcMotor.get("rearLeft");
@@ -52,10 +50,10 @@ public class DriverControl extends LinearOpMode
       leftServo = hardwareMap.servo.get("leftServo");
       rightServo = hardwareMap.servo.get("rightServo");
 //Declare DcMotor Directions
-        frontLeft.setDirection(DcMotor.Direction.FORWARD);
-        frontRight.setDirection(DcMotor.Direction.FORWARD);
-        rearLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        frontRight.setDirection(DcMotor.Direction.REVERSE);
+        rearLeft.setDirection(DcMotor.Direction.FORWARD);
+        frontLeft.setDirection(DcMotor.Direction.FORWARD);
         //liftMotor.setDirection(DcMotor.Direction.REVERSE);
         //flipperMotor.setDirection(DcMotor.Direction.FORWARD);
         //pulleyMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -146,24 +144,23 @@ public class DriverControl extends LinearOpMode
                 }
 }
 //------------------------------------Gamepad 1 End-------------------------------------------------
-// ---------------------        ---------------Gamepad 2 Start-------------------------------------------------
-
+// ------------------------------------Gamepad 2 Start-------------------------------------------------
 //Flipper up
-            if(gamepad2.dpad_up) {
+            if(gamepad1.dpad_up) {
                 leftServo.setPosition(0);
                 rightServo.setPosition(0);
 //Flipper down
             }
-            if(gamepad2.dpad_down) {
+            if(gamepad1.dpad_down) {
                 leftServo.setPosition(1.0);
                 rightServo.setPosition(1.0);
+            }
 //------------------------------------Gamepad 2 End-------------------------------------------------
 
 
             idle();
             }
         }
-    }
     public double limit(double number)
     {
         if(number < -1.0)
