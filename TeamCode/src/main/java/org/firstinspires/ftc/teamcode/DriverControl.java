@@ -179,16 +179,16 @@ public class DriverControl extends LinearOpMode {
                 }
 
                 if (gamepad2.right_bumper){
-                    stackMotor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                    stackMotor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    stackMotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    stackMotor2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     stackMotor1.setTargetPosition(23);
                     stackMotor2.setTargetPosition(-23);
 
                 }
 
                 if (gamepad2.left_bumper) {
-                    stackMotor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                    stackMotor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    stackMotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    stackMotor2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     stackMotor1.setTargetPosition(43);
                     stackMotor2.setTargetPosition(-43);
                 }
