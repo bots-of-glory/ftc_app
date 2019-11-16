@@ -59,8 +59,8 @@ public class DriverControl extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.FORWARD);
         rearLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
-        stackMotor1.setDirection(DcMotor.Direction.FORWARD);
-        stackMotor2.setDirection(DcMotor.Direction.FORWARD);
+        stackMotor1.setDirection(DcMotor.Direction.REVERSE);
+        stackMotor2.setDirection(DcMotor.Direction.REVERSE);
         stackMotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         stackMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         clawServo.setDirection(Servo.Direction.FORWARD);
@@ -73,8 +73,8 @@ public class DriverControl extends LinearOpMode {
         rightServo.setDirection(Servo.Direction.FORWARD);
 
 
-        stackMotor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        stackMotor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //stackMotor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //stackMotor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
 //Declare Mecanum Drive Variables
@@ -178,25 +178,33 @@ public class DriverControl extends LinearOpMode {
                 } else {
                 }
 
-                if (gamepad2.right_bumper){
+               /* if (gamepad2.right_bumper){
                     stackMotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     stackMotor2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
                     stackMotor1.setTargetPosition(23);
                     stackMotor2.setTargetPosition(-23);
+
+                    stackMotor1.setPower(.75);
+                    stackMotor2.setPower(.75);
 
                 }
 
                 if (gamepad2.left_bumper) {
                     stackMotor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     stackMotor2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
                     stackMotor1.setTargetPosition(43);
                     stackMotor2.setTargetPosition(-43);
-                }
-                    //43 bottom
-                    //23 brick stack
+
+                    stackMotor1.setPower(.75);
+                    stackMotor2.setPower(.75);
+                }*/
+                //43 bottom
+                //23 brick stack
                 //start stacking motor
-                stackMotor1.setPower( 0.5 * gamepad2.right_stick_y);
-                stackMotor2.setPower( -0.5 * gamepad2.right_stick_y);
+                stackMotor1.setPower( 0.35 * gamepad2.right_stick_y);
+                stackMotor2.setPower( -0.35 * gamepad2.right_stick_y);
 
                 int position = stackMotor1.getCurrentPosition();
                 telemetry.addData("Encoder Position", position);

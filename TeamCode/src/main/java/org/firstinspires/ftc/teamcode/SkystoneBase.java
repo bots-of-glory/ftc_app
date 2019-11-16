@@ -63,9 +63,10 @@ public class SkystoneBase extends LinearOpMode {
     public void moveToPlatform() {
         telemetry.addLine("Begin moveToPlatform " + playSide.toString());
         int strafeToPosition = AutonomousCommon.convertInchesToPosition(13.0,true);
-        int backupPosition = AutonomousCommon.convertInchesToPosition(32.0,false);
+        int backupPosition = AutonomousCommon.convertInchesToPosition(36.0,false);
+        int forwardPosition = AutonomousCommon.convertInchesToPosition(2.0,false);
         double power = 1.0;
-
+        macanumMovement(frontLeft, rearLeft, frontRight, rearRight, StrafeDirection.Backward, forwardPosition, power, opModeIsActive(), telemetry);
         if (playSide == PlayfieldSide.Blue) {
             macanumMovement(frontLeft, rearLeft, frontRight, rearRight, StrafeDirection.Right, strafeToPosition, power, opModeIsActive(), telemetry);
             macanumMovement(frontLeft, rearLeft, frontRight, rearRight, StrafeDirection.Backward, backupPosition, power, opModeIsActive(), telemetry);
@@ -112,13 +113,15 @@ public class SkystoneBase extends LinearOpMode {
      */
     public void movePlatformToBuildingSite(){
         telemetry.addLine("Begin movePlatformToBuildingSite");
-        int towToWall = AutonomousCommon.convertInchesToPosition(34.0,false);
+        int towToWall = AutonomousCommon.convertInchesToPosition(38.0,false);
+        int towForward = AutonomousCommon.convertInchesToPosition(1,false);
         double power = 1.0;
 
         macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,towToWall,power,opModeIsActive(),telemetry);
         AutonomousCommon.servoMovement(leftServo, 90);
         AutonomousCommon.servoMovement(rightServo, -90);
         sleep(2000); //wait
+        macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Backward,towForward,power,opModeIsActive(),telemetry);
         telemetry.addLine("End movePlatformToBuildingSite");
     }
 
