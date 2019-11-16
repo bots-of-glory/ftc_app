@@ -162,16 +162,9 @@ public class DriverControl extends LinearOpMode
                 }
 
                 //start stacking motor
-                if (gamepad2.) {
-                    stackMotor1.setPower();
-                    stackMotor2.setPower(-1);
-                } else if (gamepad2.a) {
-                    stackMotor1.setPower(-1);
-                    stackMotor2.setPower(1);
-                } else {
-                    stackMotor1.setPower(0);
-                    stackMotor2.setPower(0);
-                }
+                stackMotor1.setPower( gamepad2.right_stick_y);
+                stackMotor2.setPower(-gamepad2.right_stick_y);
+
             }
 //------------------------------------Gamepad 2 End-------------------------------------------------
 
