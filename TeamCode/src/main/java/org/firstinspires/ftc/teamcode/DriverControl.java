@@ -178,7 +178,8 @@ public class DriverControl extends LinearOpMode {
                 //start stacking motor
                 stackMotor1.setPower( 0.5 * gamepad2.right_stick_y);
                 stackMotor2.setPower( -0.5 * gamepad2.right_stick_y);
-
+                int position = stackMotor1.getCurrentPosition();
+                telemetry.addData("Encoder Position", position);
 
             }
 //------------------------------------Gamepad 2 End-------------------------------------------------
