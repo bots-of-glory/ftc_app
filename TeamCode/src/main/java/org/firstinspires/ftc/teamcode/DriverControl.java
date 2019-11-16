@@ -61,8 +61,8 @@ public class DriverControl extends LinearOpMode {
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         stackMotor1.setDirection(DcMotor.Direction.FORWARD);
         stackMotor2.setDirection(DcMotor.Direction.FORWARD);
-        stackMotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        stackMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        stackMotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        stackMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         clawServo.setDirection(Servo.Direction.FORWARD);
         //liftMotor.setDirection(DcMotor.Direction.REVERSE);
         //flipperMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -72,6 +72,9 @@ public class DriverControl extends LinearOpMode {
         leftServo.setDirection(Servo.Direction.FORWARD);
         rightServo.setDirection(Servo.Direction.FORWARD);
 
+
+        stackMotor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        stackMotor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
 //Declare Mecanum Drive Variables
@@ -175,11 +178,29 @@ public class DriverControl extends LinearOpMode {
                 } else {
                 }
 
+                if (gamepad2.right_bumper){
+                    stackMotor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    stackMotor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    stackMotor1.setTargetPosition(23);
+                    stackMotor2.setTargetPosition(-23);
+
+                }
+
+                if (gamepad2.left_bumper) {
+                    stackMotor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    stackMotor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    stackMotor1.setTargetPosition(43);
+                    stackMotor2.setTargetPosition(-43);
+                }
+                    //43 bottom
+                    //23 brick stack
                 //start stacking motor
                 stackMotor1.setPower( 0.5 * gamepad2.right_stick_y);
                 stackMotor2.setPower( -0.5 * gamepad2.right_stick_y);
+
                 int position = stackMotor1.getCurrentPosition();
                 telemetry.addData("Encoder Position", position);
+                telemetry.update();
 
             }
 //------------------------------------Gamepad 2 End-------------------------------------------------
