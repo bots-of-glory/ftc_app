@@ -23,6 +23,9 @@ public class DriverControl extends LinearOpMode
     private DcMotor rearRight;      //4     Hub1 P3
     private Servo leftServo;
     private Servo rightServo;
+    private DcMotor stackMotor1;
+    private DcMotor stackMotor2;
+    private Servo clawServo;
     // private Servo leftServo;
     // private Servo rightServo;
     //private DcMotor liftMotor;      //5     Hub2 P0
@@ -42,6 +45,9 @@ public class DriverControl extends LinearOpMode
         rearLeft = hardwareMap.dcMotor.get("rearLeft");
         frontRight = hardwareMap.dcMotor.get("frontRight");
         rearRight = hardwareMap.dcMotor.get("rearRight");
+        stackMotor1 = hardwareMap.dcMotor.get("stackMotor1");
+        stackMotor2 = hardwareMap.dcMotor.get("stackMotor2");
+        clawServo = hardwareMap.servo.get("clawservo");
       //liftMotor = hardwareMap.dcMotor.get("liftMotor");
        //flipperMotor = hardwareMap.dcMotor.get("flipperMotor");
        //pulleyMotor = hardwareMap.dcMotor.get("pulleyMotor");
@@ -54,6 +60,9 @@ public class DriverControl extends LinearOpMode
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
+        stackMotor1.setDirection(DcMotor.Direction.FORWARD);
+        stackMotor2.setDirection(DcMotor.Direction.FORWARD);
+        clawServo.setDirection(Servo.Direction.FORWARD);
         //liftMotor.setDirection(DcMotor.Direction.REVERSE);
         //flipperMotor.setDirection(DcMotor.Direction.FORWARD);
         //pulleyMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -86,24 +95,17 @@ public class DriverControl extends LinearOpMode
         boolean buttonState = false;
         {
             waitForStart();
-            while (opModeIsActive())
-            {
+            while (opModeIsActive()) {
 //Speed
-                if(gamepad1.x)
-                {
+                if (gamepad1.x) {
                     speedState = 1;
-                }
-                else if(gamepad1.a)
-                {
+                } else if (gamepad1.a) {
                     speedState = 0;
                 }
 
-                if(gamepad1.right_bumper)
-                {
+                if (gamepad1.right_bumper) {
                     direction = 1;
-                }
-                else if(gamepad1.left_bumper)
-                {
+                } else if (gamepad1.left_bumper) {
                     direction = -1;
                 }
 
@@ -112,15 +114,12 @@ public class DriverControl extends LinearOpMode
                 strafe = gamepad1.right_stick_x * direction;
                 rotate = gamepad1.left_stick_x * direction;
 //Mecanum direction calculation
-                if(direction == -1) {
+                if (direction == -1) {
                     front_left = drive - strafe + rotate;
                     rear_left = drive + strafe + rotate;
                     front_right = drive + strafe - rotate;
                     rear_right = drive - strafe - rotate;
-                }
-
-                else
-                {
+                } else {
                     front_left = drive - strafe - rotate;
                     rear_left = drive + strafe - rotate;
                     front_right = drive + strafe + rotate;
@@ -128,32 +127,51 @@ public class DriverControl extends LinearOpMode
                 }
 //-----------------------------------Gamepad 1 Start------------------------------------------------
 //Mecanum Drive
-                if(speedState == 1)
-                {
-                    frontLeft.setPower(limit(front_left)* fast);
-                    rearLeft.setPower(limit(rear_left)* fast);
-                    frontRight.setPower(limit(front_right)* fast);
-                    rearRight.setPower(limit(rear_right)* fast);
+                if (speedState == 1) {
+                    frontLeft.setPower(limit(front_left) * fast);
+                    rearLeft.setPower(limit(rear_left) * fast);
+                    frontRight.setPower(limit(front_right) * fast);
+                    rearRight.setPower(limit(rear_right) * fast);
+                } else {
+                    frontLeft.setPower(limit(front_left) * slow);
+                    rearLeft.setPower(limit(rear_left) * slow);
+                    frontRight.setPower(limit(front_right) * slow);
+                    rearRight.setPower(limit(rear_right) * slow);
                 }
-                else
-                {
-                    frontLeft.setPower(limit(front_left)* slow);
-                    rearLeft.setPower(limit(rear_left)* slow);
-                    frontRight.setPower(limit(front_right)* slow);
-                    rearRight.setPower(limit(rear_right)* slow);
-                }
-}
+
 //------------------------------------Gamepad 1 End-------------------------------------------------
 // ------------------------------------Gamepad 2 Start-------------------------------------------------
 //Flipper up
-            if(gamepad1.dpad_up) {
-                leftServo.setPosition(0);
-                rightServo.setPosition(0);
+                if (gamepad2.dpad_up) {
+                    AutonomousCommon.servoMovement(leftServo, 90);
+                    AutonomousCommon.servoMovement(rightServo, -90);
 //Flipper down
-            }
-            if(gamepad1.dpad_down) {
-                leftServo.setPosition(1.0);
-                rightServo.setPosition(1.0);
+                }
+                if (gamepad2.dpad_down) {
+                    AutonomousCommon.servoMovement(leftServo, -90);
+                    AutonomousCommon.servoMovement(rightServo, 90);
+                }
+
+                if (gamepad2.dpad_left) {
+                    AutonomousCommon.servoMovement(clawServo, 90);
+                }
+                //Forward
+                else if (gamepad2.dpad_right) {
+                    AutonomousCommon.servoMovement(clawServo, -90);
+                } else {
+                }
+
+                //start stacking motor
+                if (gamepad2.) {
+                    stackMotor1.setPower();
+                    stackMotor2.setPower(-1);
+                } else if (gamepad2.a) {
+                    stackMotor1.setPower(-1);
+                    stackMotor2.setPower(1);
+                } else {
+                    stackMotor1.setPower(0);
+                    stackMotor2.setPower(0);
+                }
             }
 //------------------------------------Gamepad 2 End-------------------------------------------------
 
