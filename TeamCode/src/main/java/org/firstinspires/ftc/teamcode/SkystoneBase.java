@@ -147,4 +147,34 @@ public class SkystoneBase extends LinearOpMode {
         telemetry.addLine("Begin dropLego");
         telemetry.addLine("End dropLego");
     }
+    /**
+     * Temporary method.
+     */
+    public void tempSkybridgeParkWall() {
+        double power = 1.0;
+        telemetry.addLine("Begin tempSkybridgeParkWall");
+        if(playSide==PlayfieldSide.Blue){
+            AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,AutonomousCommon.convertInchesToPosition(29.0,true),power,opModeIsActive(),telemetry);
+        }
+        if(playSide==PlayfieldSide.Red){
+            AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,AutonomousCommon.convertInchesToPosition(29.0,true),power,opModeIsActive(),telemetry);
+        }
+        telemetry.addLine("End tempSkybridgeParkWall");
+    }
+    /**
+     * Temporary method.
+     */
+    public void tempSkybridgeParkAway() {
+        double power = 1.0;
+        telemetry.addLine("Begin tempSkybridgeParkAway");
+        if(playSide==PlayfieldSide.Blue){
+            AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,AutonomousCommon.convertInchesToPosition(29.0,true),power,opModeIsActive(),telemetry);
+            AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Right,AutonomousCommon.convertInchesToPosition(29.0,true),power,opModeIsActive(),telemetry);
+        }
+        if(playSide==PlayfieldSide.Red){
+            AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Forward,AutonomousCommon.convertInchesToPosition(29.0,true),power,opModeIsActive(),telemetry);
+            AutonomousCommon.macanumMovement(frontLeft,rearLeft,frontRight,rearRight,StrafeDirection.Left,AutonomousCommon.convertInchesToPosition(29.0,true),power,opModeIsActive(),telemetry);
+        }
+        telemetry.addLine("End tempSkybridgeParkAway");
+    }
 }

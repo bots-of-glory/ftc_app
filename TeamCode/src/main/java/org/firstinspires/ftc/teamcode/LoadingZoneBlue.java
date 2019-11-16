@@ -13,19 +13,20 @@ public class LoadingZoneBlue extends SkystoneVisionBase{
         this.playSide = PlayfieldSide.Blue;
         initMotors();
         waitForStart();
+        tempSkybridgeParkAway();
         //1st Skystone
-        moveToLegos();
-        locateSkystone();
-        grabLego();
-        moveToBuildingZone();
-        dropLego();
+        //moveToLegos();
+        //locateSkystone();
+        //grabLego();
+        //moveToBuildingZone();
+        //dropLego();
 
         //2nd Skystone
-        moveToLegos();
-        locateSkystone();
-        grabLego();
-        moveToBuildingZone();
-        dropLego();
+        //moveToLegos();
+        //locateSkystone();
+        //grabLego();
+        //moveToBuildingZone();
+        //dropLego();
 
     }
 }
