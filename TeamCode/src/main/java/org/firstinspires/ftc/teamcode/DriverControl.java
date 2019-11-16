@@ -61,6 +61,8 @@ public class DriverControl extends LinearOpMode {
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         stackMotor1.setDirection(DcMotor.Direction.FORWARD);
         stackMotor2.setDirection(DcMotor.Direction.FORWARD);
+        stackMotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        stackMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         clawServo.setDirection(Servo.Direction.FORWARD);
         //liftMotor.setDirection(DcMotor.Direction.REVERSE);
         //flipperMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -174,9 +176,9 @@ public class DriverControl extends LinearOpMode {
                 }
 
                 //start stacking motor
-
                 stackMotor1.setPower( 0.5 * gamepad2.right_stick_y);
                 stackMotor2.setPower( -0.5 * gamepad2.right_stick_y);
+
 
             }
 //------------------------------------Gamepad 2 End-------------------------------------------------
