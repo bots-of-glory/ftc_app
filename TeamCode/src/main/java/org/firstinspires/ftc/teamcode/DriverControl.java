@@ -14,8 +14,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "DriverControl" , group = "testOp")
 //@Disabled
 
-public class DriverControl extends LinearOpMode
-{
+public class DriverControl extends LinearOpMode {
     //DcMotors
     private DcMotor frontLeft;      //1     Hub1 P0
     private DcMotor rearLeft;       //2     Hub1 P2
@@ -56,10 +55,10 @@ public class DriverControl extends LinearOpMode
       leftServo = hardwareMap.servo.get("leftServo");
       rightServo = hardwareMap.servo.get("rightServo");
 //Declare DcMotor Directions
-        frontLeft.setDirection(DcMotor.Direction.REVERSE);
-        frontRight.setDirection(DcMotor.Direction.REVERSE);
-        rearLeft.setDirection(DcMotor.Direction.FORWARD);
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
+        frontRight.setDirection(DcMotor.Direction.FORWARD);
+        rearLeft.setDirection(DcMotor.Direction.REVERSE);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
         stackMotor1.setDirection(DcMotor.Direction.FORWARD);
         stackMotor2.setDirection(DcMotor.Direction.FORWARD);
         clawServo.setDirection(Servo.Direction.FORWARD);
@@ -70,6 +69,7 @@ public class DriverControl extends LinearOpMode
 //Declare Servo Directions
         leftServo.setDirection(Servo.Direction.FORWARD);
         rightServo.setDirection(Servo.Direction.FORWARD);
+
 
 
 //Declare Mecanum Drive Variables
@@ -97,15 +97,21 @@ public class DriverControl extends LinearOpMode
             waitForStart();
             while (opModeIsActive()) {
 //Speed
-                if (gamepad1.x) {
+                if(gamepad1.x)
+                {
                     speedState = 1;
-                } else if (gamepad1.a) {
+                }
+                else if(gamepad1.a)
+                {
                     speedState = 0;
                 }
 
-                if (gamepad1.right_bumper) {
+                if(gamepad1.right_bumper)
+                {
                     direction = 1;
-                } else if (gamepad1.left_bumper) {
+                }
+                else if(gamepad1.left_bumper)
+                {
                     direction = -1;
                 }
 
@@ -114,12 +120,15 @@ public class DriverControl extends LinearOpMode
                 strafe = gamepad1.right_stick_x * direction;
                 rotate = gamepad1.left_stick_x * direction;
 //Mecanum direction calculation
-                if (direction == -1) {
+                if(direction == -1) {
                     front_left = drive - strafe + rotate;
                     rear_left = drive + strafe + rotate;
                     front_right = drive + strafe - rotate;
                     rear_right = drive - strafe - rotate;
-                } else {
+                }
+
+                else
+                {
                     front_left = drive - strafe - rotate;
                     rear_left = drive + strafe - rotate;
                     front_right = drive + strafe + rotate;
@@ -127,16 +136,19 @@ public class DriverControl extends LinearOpMode
                 }
 //-----------------------------------Gamepad 1 Start------------------------------------------------
 //Mecanum Drive
-                if (speedState == 1) {
-                    frontLeft.setPower(limit(front_left) * fast);
-                    rearLeft.setPower(limit(rear_left) * fast);
-                    frontRight.setPower(limit(front_right) * fast);
-                    rearRight.setPower(limit(rear_right) * fast);
-                } else {
-                    frontLeft.setPower(limit(front_left) * slow);
-                    rearLeft.setPower(limit(rear_left) * slow);
-                    frontRight.setPower(limit(front_right) * slow);
-                    rearRight.setPower(limit(rear_right) * slow);
+                if(speedState == 1)
+                {
+                    frontLeft.setPower(limit(front_left)* fast);
+                    rearLeft.setPower(limit(rear_left)* fast);
+                    frontRight.setPower(limit(front_right)* fast);
+                    rearRight.setPower(limit(rear_right)* fast);
+                }
+                else
+                {
+                    frontLeft.setPower(limit(front_left)* slow);
+                    rearLeft.setPower(limit(rear_left)* slow);
+                    frontRight.setPower(limit(front_right)* slow);
+                    rearRight.setPower(limit(rear_right)* slow);
                 }
 
 //------------------------------------Gamepad 1 End-------------------------------------------------
@@ -162,8 +174,9 @@ public class DriverControl extends LinearOpMode
                 }
 
                 //start stacking motor
-                stackMotor1.setPower( gamepad2.right_stick_y);
-                stackMotor2.setPower(-gamepad2.right_stick_y);
+
+                stackMotor1.setPower( 0.5 * gamepad2.right_stick_y);
+                stackMotor2.setPower( -0.5 * gamepad2.right_stick_y);
 
             }
 //------------------------------------Gamepad 2 End-------------------------------------------------
